@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Loja Geek";
+}
+
+<hr />
+<div class="row">
+    <img src="~/Imgs/Header 1170x200.jpg" class="img-center">
+</div>
+<hr />
+
+<div class="row">
+    @foreach (var item in ViewBag.produtos)
+    {
+        <div class="col-md-4">
+            <h3>@item.Nome</h3>
+            @if (@item.Foto != null)
+            {
+                <img src="#" alt="imagem do produto" />
+            }
+            else
+            {
+                <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
+            }
+            <br />
+            @Html.ActionLink("Detalhes", "Produto", new { id = item.Id})
+            @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
+            {
+                <input type="hidden" name="id_produto" value=@item.Id>
+                <input type="hidden" name="quantidade" value="1">
+                <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar para o carrinho">
+            }
+        </div>
+        
+    }
+</div>

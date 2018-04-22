@@ -1,0 +1,13 @@
+﻿@using LojaGeek.Model.Utils
+<li>
+    <a href="">@LoginUtils.Cliente.Nome</a>
+</li>
+
+<li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+<li>
+    @Html.ActionLink("Sair", "DeslogarCliente", "Cliente")
+</li>
+<li class="pull-right">
+    @Html.ActionLink("Carrinho", "Index", "Carrinho")
+</li>
