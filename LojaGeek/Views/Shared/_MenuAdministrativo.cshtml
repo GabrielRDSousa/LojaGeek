@@ -1,6 +1,10 @@
-﻿<li>
-    @Html.ActionLink("Produtos", "Index", "Produto")
-</li>
-<li class="pull-right">
-    @Html.ActionLink("Carrinho", "Index", "Carrinho")
-</li>
+﻿<ul class="nav navbar-nav">
+    <li class="active">@Html.ActionLink(" ", "Index", "Home", new { @class = "glyphicon glyphicon-home" })</li>
+    <li class="active">@Html.ActionLink("Produtos", "Index", "Produto")</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li>@Html.ActionLink("Sair", "DeslogarCliente", "Cliente")</li>
+</ul>
+
+
+

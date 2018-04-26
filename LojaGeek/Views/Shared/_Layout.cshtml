@@ -10,19 +10,19 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Loja Geek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if (LoginUtils.Admin == null)
+            <div id="navbar" class="navbar-collapse collapse">
+             @if (LoginUtils.Admin == null)
                     {
                         if (LoginUtils.Cliente == null)
                         {
@@ -32,23 +32,19 @@
                         {
                             @Html.Partial("_MenuLogado")
                         }
-                        <li>
-                            @Html.ActionLink("Administrativo", "Index", "Administrativo")
-                        </li>
                     }
                     @if (LoginUtils.Admin != null)
                     {
                         @Html.Partial("_MenuAdministrativo")
                     }
-                </ul>
-            </div>
+            </div><!--/.nav-collapse -->
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Loja Geek</p>
+            <p>@Html.ActionLink("©" + @DateTime.Now.Year+"- Loja Geek", "Index", "Administrativo")</p>
         </footer>
     </div>
 
