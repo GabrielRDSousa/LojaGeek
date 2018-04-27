@@ -3,47 +3,59 @@
 }
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/super-mario-odyssey.jpg" alt="Imagem do jogo Mário Odyssey" />
+
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="background-color:#f96c6c!important">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="~/Images/super-mario-odyssey.jpg" alt="Imagem do jogo Mário Odyssey" class="img-responsive" />
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/god-of-war-werah.jpg" alt="Imagem para o jogo God Of war 4" />
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="~/Images/god-of-war-werah.jpg" alt="Imagem para o jogo God Of war 4" class="img-responsive" />
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/maxresdefault.jpg" alt="Imagem para o jogo Zelda Breath of the Wild" />
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="~/Images/maxresdefault.jpg" alt="Imagem para o jogo Zelda Breath of the Wild" class="img-responsive" />
+            </div>
         </div>
     </div>
 </div>
+
 <hr />
 
-<div class="row">
+<div class="row mb-4" style="display:flex; justify-content:center;">
     @foreach (var item in ViewBag.produtos)
     {
-        <div class="col-md-4">
-            <h3>@item.Nome</h3>
-            @if (@item.Foto != null)
-            {
-                <img src="#" alt="imagem do produto" />
-            }
-            else
-            {
-                <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
-            }
-            <br />
-            @Html.ActionLink("Detalhes", "Produto", new { id = item.Id})
-            @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
-            {
-                <input type="hidden" name="id_produto" value=@item.Id>
-                <input type="hidden" name="quantidade" value="1">
-                <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar para o carrinho">
-            }
+        <div class="col-md-3">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary" style="margin:23%">Plataforma</strong>
+                    <h3 class="mb-2" style="text-align:center">
+                        @item.Nome
+                    </h3>
+                    <div class="card-body" style="display:flex; justify-content:center;">
+                        @if (@item.Foto != null)
+                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src=" " data-holder-rendered="true">}
+                        else
+                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
+                    </div>
+                    <div style="display:flex; justify-content:space-around;">
+                        @Html.ActionLink("Descubra mais", "Produto", new { id = item.Id }, new { @class = "btn btn-default" })
+                        <div>
+                            @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id_produto" value=@item.Id>
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            }
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-        
     }
 </div>

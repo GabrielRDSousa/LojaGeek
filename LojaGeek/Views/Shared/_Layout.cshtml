@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container">    
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -20,9 +20,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Loja Geek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+            </div>            
             <div id="navbar" class="navbar-collapse collapse">
-             @if (LoginUtils.Admin == null)
+                @if (LoginUtils.Admin == null)
                     {
                         if (LoginUtils.Cliente == null)
                         {
@@ -36,11 +36,11 @@
                     @if (LoginUtils.Admin != null)
                     {
                         @Html.Partial("_MenuAdministrativo")
-                    }
-            </div><!--/.nav-collapse -->
+                }
+            </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
         <hr />
         <footer>
