@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LojaGeek.Model.DB.Model.Carrinho>
+
+@{
+    ViewBag.Title = "Comprar";
+}
+
+<h2>Comprar</h2>
+
+<div class="container">
+    <ul class="list-group">
+        @foreach (var item in ViewBag.Compra)
+        {
+            <li class="list-group-item">
+                @if (@item.Produto.Foto != null)
+                {
+                    <img src="#" alt="imagem do produto" class="img-thumbnail" /><b><span class="list-group-item-text"> @item.Produto.Nome</span></b>
+                }
+                else
+                {
+                    <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" class="img-thumbnail" height="50px" width="50px" /><b><span class="list-group-item-text"> @item.Produto.Nome</span></b>
+                }
+                <b><span class="text-muted" style="margin-left:5%">Preço Unitário: R$ @item.Produto.PrecoUnitario</span></b>
+
+
+                <div class="container" style="padding: 0 0; margin:1% 0; ">
+                    <span>Quantidade solicitada: @item.Quantidade</span>
+                    <span>Total do item: @(item.Quantidade*item.Produto.PrecoUnitario)</span>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

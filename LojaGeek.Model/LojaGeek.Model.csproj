@@ -73,6 +73,8 @@
     <Compile Include="DB\Model\Carrinho.cs" />
     <Compile Include="DB\Model\Cliente.cs" />
     <Compile Include="DB\Model\Comentario.cs" />
+    <Compile Include="DB\Model\CompraRealizada.cs" />
+    <Compile Include="DB\Model\Cupom.cs" />
     <Compile Include="DB\Model\Endereco.cs" />
     <Compile Include="DB\Model\Interesse.cs" />
     <Compile Include="DB\Model\Produto.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="DB\Repository\CarrinhoRepository.cs" />
     <Compile Include="DB\Repository\ClienteRepository.cs" />
     <Compile Include="DB\Repository\ComentarioRepository.cs" />
+    <Compile Include="DB\Repository\CompraRealizadaRepository.cs" />
+    <Compile Include="DB\Repository\CupomRepository.cs" />
     <Compile Include="DB\Repository\EnderecoRepository.cs" />
     <Compile Include="DB\Repository\InteresseRepository.cs" />
     <Compile Include="DB\Repository\ProdutoRepository.cs" />

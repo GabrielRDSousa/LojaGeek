@@ -30,8 +30,9 @@ namespace LojaGeek.Model.DB
         public ComentarioRepository ComentarioRepository { get; set; }
         public CarrinhoRepository CarrinhoRepository { get; set; }
         public ValorCarrinhoRepository ValorCarrinhoRepository { get; set; }
+        public CompraRealizadaRepository CompraRealizadaRepository { get; set; }
 
-        
+
         private DbFactory()
         {
             Conexao();
@@ -43,7 +44,8 @@ namespace LojaGeek.Model.DB
             ComentarioRepository = new ComentarioRepository(Session);
             CarrinhoRepository = new CarrinhoRepository(Session);
             ValorCarrinhoRepository = new ValorCarrinhoRepository(Session);
-        }
+            CompraRealizadaRepository = new CompraRealizadaRepository(Session);
+    }
 
         public static DbFactory Instance
         {

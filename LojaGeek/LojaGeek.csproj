@@ -214,18 +214,16 @@
     <Content Include="Views\Shared\_MenuLogado.cshtml" />
     <Content Include="Views\Cliente\CadastrarCliente.cshtml" />
     <Content Include="Views\Cliente\EntrarCliente.cshtml" />
-    <Content Include="Views\Cliente\Logar.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Produto\EditarProduto.cshtml" />
     <Content Include="Views\Shared\_MenuAdministrativo.cshtml" />
     <Content Include="Views\Administrativo\Index.cshtml" />
     <Content Include="Views\Produto\Detalhes.cshtml" />
     <Content Include="Views\Carrinho\Index.cshtml" />
+    <Content Include="Views\Carrinho\Comprar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comentario\" />
-    <Folder Include="Views\Interesses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
