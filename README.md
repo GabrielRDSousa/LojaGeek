@@ -150,10 +150,12 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Fazer uma aparência de nota fiscal.
 
 ## Construído com as ferramentas
-* [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - O framework web utilizado
+* [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - O framework back-end utilizado
 * [Razor](http://jakeydocs.readthedocs.io/en/latest/mvc/views/razor.html) - O framework web utilizado
 * [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - CSS Framework utilizado
 * [JQuery](https://api.jquery.com/) - JavaScript framework
+* [NHibernate](http://hibernate.org/orm/documentation/5.2/) - Framework de banco de dados utilizado
+
 
 ## Autores
 * **Gabriel Ramos de Sousa** - *Atual mantenedor do projeto, Mauntenção do sistema, refatoração e continuação de senvolvimento* - [GabrielDSousa](https://github.com/GabrielDSousa)
