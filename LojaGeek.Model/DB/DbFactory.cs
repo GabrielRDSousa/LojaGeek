@@ -23,29 +23,35 @@ namespace LojaGeek.Model.DB
 
         private ISessionFactory _sessionFactory;
 
-        public ClienteRepository ClienteRepository { get; set; }
-        public EnderecoRepository EnderecoRepository { get; set; }
-        public ProdutoRepository ProdutoRepository { get; set; }
-        public InteresseRepository InteresseRepository { get; set; }
-        public ComentarioRepository ComentarioRepository { get; set; }
         public CarrinhoRepository CarrinhoRepository { get; set; }
-        public ValorCarrinhoRepository ValorCarrinhoRepository { get; set; }
-        public CompraRealizadaRepository CompraRealizadaRepository { get; set; }
+        public ClienteRepository ClienteRepository { get; set; }
+        public ComentarioRepository ComentarioRepository { get; set; }
+        public CompraRespository CompraRespository { get; set; }
+        public CupomRepository CupomRepository { get; set; }
+        public EnderecoRepository EnderecoRepository { get; set; }
+        public InteresseRepository InteresseRepository { get; set; }
+        public ItemCarrinhoRepository ItemCarrinhoRepository { get; set; }
+        public ProdutoRepository ProdutoRepository { get; set; }
+        
+        
+        
+        
 
 
         private DbFactory()
         {
             Conexao();
 
-            ClienteRepository = new ClienteRepository(Session);
-            EnderecoRepository = new EnderecoRepository(Session);
-            ProdutoRepository = new ProdutoRepository(Session);
-            InteresseRepository = new InteresseRepository(Session);
-            ComentarioRepository = new ComentarioRepository(Session);
             CarrinhoRepository = new CarrinhoRepository(Session);
-            ValorCarrinhoRepository = new ValorCarrinhoRepository(Session);
-            CompraRealizadaRepository = new CompraRealizadaRepository(Session);
-    }
+            ClienteRepository = new ClienteRepository(Session);
+            ComentarioRepository = new ComentarioRepository(Session);
+            CompraRespository = new CompraRespository(Session);
+            CupomRepository = new CupomRepository(Session);
+            EnderecoRepository = new EnderecoRepository(Session);
+            InteresseRepository = new InteresseRepository(Session);
+            ItemCarrinhoRepository = new ItemCarrinhoRepository(Session);
+            ProdutoRepository = new ProdutoRepository(Session);    
+        }
 
         public static DbFactory Instance
         {

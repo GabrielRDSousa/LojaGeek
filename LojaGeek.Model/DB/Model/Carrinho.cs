@@ -11,10 +11,17 @@ namespace LojaGeek.Model.DB.Model
     public class Carrinho
     {
         public virtual Guid Id { get; set; }
-        public virtual Produto Produto { get; set; }
         public virtual Cliente Cliente { get; set; }
-        public virtual int Quantidade { get; set; }
         public virtual String Sessao { get; set; }
+        public virtual Double ValorTotal { get; set; }
+        public virtual Cupom Cupom { get; set; }
+        public virtual Double ValorFrete { get; set; }
+        public virtual IList<ItemCarrinho> Items { get; set; }
+
+        public Carrinho()
+        {
+            Items = new List<ItemCarrinho>();
+        }
     }
 
     public class CarrinhoMap : ClassMapping<Carrinho>
@@ -23,19 +30,28 @@ namespace LojaGeek.Model.DB.Model
         {
             Id(x => x.Id, m => m.Generator(Generators.Guid));
             Property(x => x.Sessao);
-            Property(x => x.Quantidade);
+            Property(x => x.ValorFrete);
+            Property(x => x.ValorTotal);
 
-            ManyToOne(x => x.Produto, m => {
-                m.Column("ProdutoId");
-                m.Lazy(LazyRelation.NoLazy);
-                m.Cascade(Cascade.Persist);
-            });
-
-            ManyToOne(x => x.Produto, m => {
+            ManyToOne(x => x.Cliente, m => {
                 m.Column("ClienteId");
                 m.Lazy(LazyRelation.NoLazy);
-                m.Cascade(Cascade.Persist);
+                m.Cascade(Cascade.Refresh);
             });
+
+            ManyToOne(x => x.Cupom, m => {
+                m.Column("CupomId");
+                m.Lazy(LazyRelation.NoLazy);
+                m.Cascade(Cascade.Refresh);
+            });
+
+            Bag(x => x.Items, m =>
+            {
+                m.Cascade(Cascade.All);
+                m.Lazy(CollectionLazy.NoLazy);
+                m.Inverse(true);
+                m.Key(k => k.Column("CarrinhoId"));
+            }, r => r.OneToMany());
         }
     }
 }

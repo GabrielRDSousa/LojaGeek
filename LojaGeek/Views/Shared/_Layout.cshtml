@@ -36,15 +36,15 @@
                     @if (LoginUtils.Admin != null)
                     {
                         @Html.Partial("_MenuAdministrativo")
-                }
+                    }
             </div>
         </div>
     </nav>
     <div class="body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>@Html.ActionLink("©" + @DateTime.Now.Year+"- Loja Geek", "Index", "Administrativo")</p>
+        <footer class="bottom">
+            <p>@Html.ActionLink("©" + @DateTime.Now.Year+"- Loja Geek", "LoginView", "Administrativo")</p>
         </footer>
     </div>
 

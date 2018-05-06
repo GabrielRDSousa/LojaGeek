@@ -1,4 +1,7 @@
-﻿@{
+﻿@model IEnumerable<LojaGeek.Model.DB.Model.Produto>
+
+
+@{
     ViewBag.Title = "Loja Geek";
 }
 
@@ -27,7 +30,7 @@
 <hr />
 
 <div class="row mb-4" style="display:flex; justify-content:center;">
-    @foreach (var item in ViewBag.produtos)
+    @foreach (var item in Model)
     {
         <div class="col-md-3">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
@@ -43,17 +46,17 @@
                         {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
                     </div>
                     <div style="display:flex; justify-content:space-around;">
-                        @Html.ActionLink("Descubra mais", "Produto", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Descubra mais", "DetalheProduto", new { id = item.Id }, new { @class = "btn btn-default" })
                         <div>
                             @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
                             {
-                                <input type="hidden" name="id_produto" value=@item.Id>
+                                <input type="hidden" name="id" value=@item.Id>
                                 <input type="hidden" name="quantidade" value="1">
                                 <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-shopping-cart"></i></button>
                             }
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

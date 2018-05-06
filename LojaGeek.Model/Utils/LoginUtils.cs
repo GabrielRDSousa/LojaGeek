@@ -74,6 +74,13 @@ namespace LojaGeek.Model.Utils
                 HttpContext.Current.Session["Admin"] = null;
                 return false;
             }
+
+        }
+
+        public static void DeslogarAdmin()
+        {
+            HttpContext.Current.Session["Admin"] = null;
+            HttpContext.Current.Session.Remove("Admin");
         }
     }
 }

@@ -15,9 +15,20 @@ namespace LojaGeek.Model.DB.Model
         public virtual Guid Id { get; set; }
         public virtual String Nome { get; set; }
         public virtual String Descricao { get; set; }
-        public virtual int QuantidadeEstoque { get; set; }
-        public virtual double PrecoUnitario { get; set; }
+        public virtual int Estoque { get; set; }
+        public virtual double Preco { get; set; }
+        public virtual DateTime DataModificacao { get; set; }
         public virtual String Foto { get; set; }
+        public virtual Boolean Ativo { get; set; }
+        public virtual IList<Comentario> Comentarios { get; set; }
+
+        public Produto()
+        {
+            Comentarios = new List<Comentario>();
+            DataModificacao = DateTime.Now;
+        }
+
+
     }
 
     public class ProdutoMap : ClassMapping<Produto>
@@ -28,9 +39,19 @@ namespace LojaGeek.Model.DB.Model
 
             Property(x => x.Nome);
             Property(x => x.Descricao);
-            Property(x => x.QuantidadeEstoque);
-            Property(x => x.PrecoUnitario);
+            Property(x => x.Estoque);
+            Property(x => x.Preco);
+            Property(x => x.DataModificacao);
+            Property(x => x.Ativo);
             Property(x => x.Foto);
+
+            Bag(x => x.Comentarios, m =>
+            {
+                m.Cascade(Cascade.All);
+                m.Lazy(CollectionLazy.NoLazy);
+                m.Inverse(true);
+                m.Key(k => k.Column("ProdutoId"));
+            }, r => r.OneToMany());
         }
     }
 }

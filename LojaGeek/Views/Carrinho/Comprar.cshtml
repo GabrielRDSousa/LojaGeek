@@ -1,32 +1,20 @@
-﻿@model IEnumerable<LojaGeek.Model.DB.Model.Carrinho>
+﻿@model LojaGeek.Model.DB.Model.Compra
 
 @{
     ViewBag.Title = "Comprar";
 }
 
-<h2>Comprar</h2>
+<h1>Comprovante de compra, do senhor(a) @Model.Cliente.Nome @Model.Cliente.Sobrenome, portador do cpf: @Model.Cliente.Cpf</h1><br />
+<h2>Data da compra: @Model.DataDaCompra</h2>
+<h3>Items comprados</h3>
+@foreach(var item in Model.Carrinho.Items)
+{
+    <p>@item.Quantidade x @item.Produto.Nome, Preço: @(item.Produto.Preco*item.Quantidade)</p>
+}
 
-<div class="container">
-    <ul class="list-group">
-        @foreach (var item in ViewBag.Compra)
-        {
-            <li class="list-group-item">
-                @if (@item.Produto.Foto != null)
-                {
-                    <img src="#" alt="imagem do produto" class="img-thumbnail" /><b><span class="list-group-item-text"> @item.Produto.Nome</span></b>
-                }
-                else
-                {
-                    <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" class="img-thumbnail" height="50px" width="50px" /><b><span class="list-group-item-text"> @item.Produto.Nome</span></b>
-                }
-                <b><span class="text-muted" style="margin-left:5%">Preço Unitário: R$ @item.Produto.PrecoUnitario</span></b>
+<p>Valor Frete: @Model.Carrinho.ValorFrete</p>
+<p>Valor total: @Model.Carrinho.ValorTotal</p>
 
+<h3>O pedido será entrega no endereço: <!--ToDo Sistema de endereços--></h3>
+<h3>Haverá um contato em breve para a forma de pagamento</h3>
 
-                <div class="container" style="padding: 0 0; margin:1% 0; ">
-                    <span>Quantidade solicitada: @item.Quantidade</span>
-                    <span>Total do item: @(item.Quantidade*item.Produto.PrecoUnitario)</span>
-                </div>
-            </li>
-        }
-    </ul>
-</div>

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace LojaGeek.Model.DB.Repository
 {
-    public class CupomRepository : RepositoryBase<Cupom>
+    public class CompraRespository : RepositoryBase<Compra>
     {
-        public CupomRepository(ISession session) : base(session)
+        public CompraRespository(ISession session) : base(session)
         {
         }
 
-        public Cupom GetByName(String nome)
+        public IList<Compra> GetAllByClient(Cliente cliente)
         {
             try
             {
-                return this.Session.Query<Cupom>()
-                           .Where(w => w.Nome.ToLower() == nome.Trim().ToLower()).First();
+                return this.Session.Query<Compra>()
+                           .Where(w => w.Cliente.Equals(cliente)).ToList();
             }
             catch (Exception ex)
             {

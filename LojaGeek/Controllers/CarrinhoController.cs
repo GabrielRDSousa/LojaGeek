@@ -14,104 +14,159 @@ namespace LojaGeek.Controllers
     {
         public ActionResult Index()
         {
-            string sessionId = this.Session.SessionID;
-            var carrinho = DbFactory.Instance.CarrinhoRepository.GetAllBySession(sessionId); ;
-            ViewBag.Carrinho = carrinho;
-
-            var total = 0.0;
-            foreach (var item in carrinho) { total = total + (item.Produto.PrecoUnitario * item.Quantidade); }
-
-            var cupom = this.Session["cupom"];
-            if(cupom != null) { total = total - (total * 0.1); }
-            ViewBag.Cupom = cupom;
-
-            ViewBag.Total = total;
-
-            return View();
-        }
-        public ActionResult ColocarCarrinho(Guid id_produto, int quantidade)
-        {
-            Produto produto = DbFactory.Instance.ProdutoRepository.FindById(id_produto);
-            Carrinho carrinho = new Carrinho();
-
-            if (this.Session["Usuario"] != null)
+            Carrinho carrinho = (Carrinho)Session["carrinho"];
+            if (carrinho != null)
             {
-                Cliente cliente = (Cliente) this.Session["Usuario"];
-                carrinho.Cliente = cliente;
+                carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
             }
-            
-            string sessionId = this.Session.SessionID;
+            else
+            {
+                carrinho = new Carrinho();
+            }
+            Session["carrinho"] = carrinho;
+            Double total = 0.0;
+            foreach(var item in carrinho.Items)
+            {
+                total += (item.Produto.Preco * item.Quantidade);
+            }
+            if (carrinho.ValorFrete != null)
+            {
+                total += carrinho.ValorFrete;
+            }
+            if (carrinho.Cupom != null)
+            {
+                total -= ((total- carrinho.ValorFrete) * carrinho.Cupom.Desconto);
+            }
+            carrinho.ValorTotal = total;
+            carrinho = DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
 
-            carrinho.Produto = produto;
-            carrinho.Quantidade = quantidade;
-            carrinho.Sessao = sessionId;
+            ViewBag.erro = (String)Session["erro"];
+            ViewBag.sucesso = (String)Session["sucesso"];
 
-            DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
-            
+            return View(carrinho);
+        }
+
+        public ActionResult ColocarCarrinho(Guid id, int quantidade)
+        {
+            var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
+            Carrinho carrinho = (Carrinho)Session["carrinho"];
+            foreach(var ic in carrinho.Items)
+            {
+                if (ic.Produto.Id == produto.Id)
+                {
+                    if(ic.Quantidade < produto.Estoque)
+                    {
+                        ic.Quantidade += 1;
+                        DbFactory.Instance.ItemCarrinhoRepository.SaveOrUpdate(ic);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }                                       
+                }
+            }
+
+
+            ItemCarrinho item = new ItemCarrinho();
+            item.Produto = produto;
+            item.Quantidade = quantidade;
+            item.Carrinho = carrinho;
+            DbFactory.Instance.ItemCarrinhoRepository.SaveOrUpdate(item);
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult RetirarItem(Guid id)
+        {
+            var item = DbFactory.Instance.ItemCarrinhoRepository.FindById(id);
+            DbFactory.Instance.ItemCarrinhoRepository.Delete(item);
             return RedirectToAction("Index");
         }
 
-        public ActionResult RetirarDoCarrinho(Guid id)
+        public ActionResult AlterarQuantidade(Guid id, int quantidade_nova)
         {
-            Carrinho carrinho = DbFactory.Instance.CarrinhoRepository.FindById(id);
-            DbFactory.Instance.CarrinhoRepository.Delete(carrinho);
+            var item = DbFactory.Instance.ItemCarrinhoRepository.FindById(id);
+            item.Quantidade = quantidade_nova;
+            DbFactory.Instance.ItemCarrinhoRepository.SaveOrUpdate(item);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult GravarCupom(String cupom)
+        {
+            var c = DbFactory.Instance.CupomRepository.GetByName(cupom);
+            if (c != null)
+            {
+                Carrinho carrinho = (Carrinho)Session["carrinho"];
+                if (carrinho != null)
+                {
+                    carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
+                    carrinho.Cupom = c;
+                    DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
+                    carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
+                    Session["carrinho"] = carrinho;
+                }
+                else
+                {
+                    Session["erro"] = "Carrinho vazio, coloque algum produto no carrinho antes";
+                }
+            }
+            else
+            {
+                Session["erro"] = "Cupom não existe";
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CalcularFrete(String frete)
+        {
+            Carrinho carrinho = (Carrinho)Session["carrinho"];
+            if (carrinho != null)
+            {
+                carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
+                carrinho.ValorFrete = 10;
+                carrinho = DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
+                Session["sucesso"] = "O frete é de 10 reais";
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult Comprar()
         {
-            string sessionId = this.Session.SessionID;
-            var carrinho = DbFactory.Instance.CarrinhoRepository.GetAllBySession(sessionId);
-            var compraRealizada = new CompraRealizada();
-            Cliente cliente = (Cliente) this.Session["Usuario"];
-            foreach(var item in carrinho)
+            Carrinho carrinho = (Carrinho)Session["carrinho"];
+            if (carrinho != null)
             {
-                compraRealizada.Produto = item.Produto;
-                compraRealizada.Cliente = cliente;
-                compraRealizada.DataCompra = DateTime.Now;
-                compraRealizada.Quantidade = item.Quantidade;
-                compraRealizada.Sessao = item.Sessao;
+                carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
+                var compra = new Compra();
+                compra.Carrinho = carrinho;
 
-                var produto = DbFactory.Instance.ProdutoRepository.FindById(item.Produto.Id);
-                produto.QuantidadeEstoque = produto.QuantidadeEstoque - item.Quantidade;
-                DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
-                DbFactory.Instance.CarrinhoRepository.Delete(item);
-            }
-            var compra = DbFactory.Instance.CompraRealizadaRepository.GetAllBySession(sessionId);
-            ViewBag.Compra = compra;
-            return View();
-        }
+                compra.Cliente = (Cliente)Session["usuario"];
 
-        public ActionResult AtualizarTotal(Guid id_item_carrinho, int quantidade)
-        {
-            var carrinho = DbFactory.Instance.CarrinhoRepository.FindById(id_item_carrinho);
-            if (quantidade > 0)
-            {
-                carrinho.Quantidade = quantidade;
-                DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
-                return RedirectToAction("Index");
+                compra.EnderecoEntrega = null;
+
+                DbFactory.Instance.CompraRespository.SaveOrUpdate(compra);
+
+                foreach(ItemCarrinho item in compra.Carrinho.Items)
+                {
+                    var produto = item.Produto;
+                    produto.Estoque -= item.Quantidade;
+                    if(produto.Estoque == 0)
+                    {
+                        produto.Ativo = false;
+                    }
+                    DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+                }
+
+                Session["carrinho"] = null;
+
+                return View(compra);
             }
             else
             {
-                return RedirectToAction("RetirarDoCarrinho", new { id=id_item_carrinho});
+                return View("Index", "Home");
             }
-        }
 
-        public ActionResult AplicarCupom(String cupom)
-        {
-            this.Session["cupom"] = cupom;
-            ViewBag.Cupom = cupom;
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult AplicarFrete(String frete)
-        {
-            string sessionId = this.Session.SessionID;
-            var valorCarrinho = DbFactory.Instance.ValorCarrinhoRepository.FindByIdString(sessionId);
-            valorCarrinho.Total = valorCarrinho.Total -10;
-            DbFactory.Instance.ValorCarrinhoRepository.SaveOrUpdate(valorCarrinho);
-
-            return RedirectToAction("Index");
+            
         }
     }
 }

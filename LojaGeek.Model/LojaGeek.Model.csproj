@@ -73,24 +73,25 @@
     <Compile Include="DB\Model\Carrinho.cs" />
     <Compile Include="DB\Model\Cliente.cs" />
     <Compile Include="DB\Model\Comentario.cs" />
-    <Compile Include="DB\Model\CompraRealizada.cs" />
+    <Compile Include="DB\Model\Compra.cs" />
     <Compile Include="DB\Model\Cupom.cs" />
     <Compile Include="DB\Model\Endereco.cs" />
     <Compile Include="DB\Model\Interesse.cs" />
+    <Compile Include="DB\Model\ItemCarrinho.cs" />
     <Compile Include="DB\Model\Produto.cs" />
     <Compile Include="DB\Model\Validation\CpfAttribute.cs" />
-    <Compile Include="DB\Model\ValorCarrinho.cs" />
     <Compile Include="DB\Repository\CarrinhoRepository.cs" />
     <Compile Include="DB\Repository\ClienteRepository.cs" />
     <Compile Include="DB\Repository\ComentarioRepository.cs" />
-    <Compile Include="DB\Repository\CompraRealizadaRepository.cs" />
+    <Compile Include="DB\Repository\CompraRespository.cs" />
     <Compile Include="DB\Repository\CupomRepository.cs" />
     <Compile Include="DB\Repository\EnderecoRepository.cs" />
     <Compile Include="DB\Repository\InteresseRepository.cs" />
+    <Compile Include="DB\Repository\ItemCarrinhoRepository.cs" />
     <Compile Include="DB\Repository\ProdutoRepository.cs" />
     <Compile Include="DB\Repository\RepositoryBase.cs" />
-    <Compile Include="DB\Repository\ValorCarrinhoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CalculoUtils.cs" />
     <Compile Include="Utils\LoginUtils.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ namespace LojaGeek.Controllers
             Comentario coment = new Comentario();
             Produto produto = DbFactory.Instance.ProdutoRepository.FindById(idProduto);
             coment.Nome = nome;
-            coment.Coment = comentario;
+            coment.Texto = comentario;
             coment.Produto = produto;
             DbFactory.Instance.ComentarioRepository.SaveOrUpdate(coment);
             return RedirectToAction("Detalhes", "Produto", new { id = produto.Id});

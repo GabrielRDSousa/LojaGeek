@@ -12,7 +12,7 @@ namespace LojaGeek.Model.DB.Model
     {
         public virtual Guid Id { get; set; }
         public virtual String Nome { get; set; }
-        public virtual String Coment { get; set; }
+        public virtual String Texto { get; set; }
         public virtual Produto Produto { get; set; }
     }
 
@@ -23,12 +23,12 @@ namespace LojaGeek.Model.DB.Model
             Id(x => x.Id, m => m.Generator(Generators.Guid));
 
             Property(x => x.Nome);
-            Property(x => x.Coment);
+            Property(x => x.Texto);
 
             ManyToOne(x => x.Produto, m => {
                 m.Column("ProdutoId");
                 m.Lazy(LazyRelation.NoLazy);
-                m.Cascade(Cascade.Persist);
+                m.Cascade(cascadeStyle: Cascade.Refresh);
             });
         }
     }

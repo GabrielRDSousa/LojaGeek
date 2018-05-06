@@ -214,11 +214,12 @@
     <Content Include="Views\Shared\_MenuLogado.cshtml" />
     <Content Include="Views\Cliente\CadastrarCliente.cshtml" />
     <Content Include="Views\Cliente\EntrarCliente.cshtml" />
-    <Content Include="Views\Produto\Index.cshtml" />
-    <Content Include="Views\Produto\EditarProduto.cshtml" />
+    <Content Include="Views\Administrativo\Estoque.cshtml" />
     <Content Include="Views\Shared\_MenuAdministrativo.cshtml" />
-    <Content Include="Views\Administrativo\Index.cshtml" />
+    <Content Include="Views\Administrativo\LoginView.cshtml" />
     <Content Include="Views\Produto\Detalhes.cshtml" />
+    <Content Include="Views\Produto\CadastrarProduto.cshtml" />
+    <Content Include="Views\Administrativo\AdicionarEstoque.cshtml" />
     <Content Include="Views\Carrinho\Index.cshtml" />
     <Content Include="Views\Carrinho\Comprar.cshtml" />
   </ItemGroup>

@@ -1,9 +1,9 @@
 ﻿<ul class="nav navbar-nav">
-    <li class="active">@Html.ActionLink(" ", "Index", "Home", new { @class = "glyphicon glyphicon-home" })</li>
-    <li class="active">@Html.ActionLink("Produtos", "Index", "Produto")</li>
+    <li class="active">@Html.ActionLink(" ", "Index", "Home",null, new { @class = "glyphicon glyphicon-home" })</li>
+    <li class="panel-info">@Html.ActionLink("Estoque", "Estoque", "Administrativo")</li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-    <li>@Html.ActionLink("Sair", "DeslogarCliente", "Cliente")</li>
+    <li>@Html.ActionLink("Sair", "DeslogarAdmin", "Administrativo")</li>
 </ul>
 
 

@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @ViewBag.Produto.Nome
+            @Model.Nome
         </dd>
 
         <dt>
@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @ViewBag.Produto.Descricao
+            @Model.Descricao
         </dd>
 
         <dt>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @ViewBag.Produto.QuantidadeEstoque
+            @Model.Estoque
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @ViewBag.Produto.PrecoUnitario
+            @Model.Preco
         </dd>
 
         <dt>
@@ -47,9 +47,9 @@
         </dt>
 
         <dd>
-            @if (@ViewBag.Produto.Foto != null)
+            @if (Model.Foto != null)
             {
-                <img src="#" alt="imagem do produto" />
+                <img src="@Model.Foto" alt="imagem do produto" />
             }
             else
             {
@@ -68,7 +68,7 @@
                 <input type="text" name="nome" placeholder="Qual o seu nome ?" required />
             </div>
 
-            <input type="hidden" name="idProduto" value="@ViewBag.produto.Id" />
+            <input type="hidden" name="idProduto" value="@Model.Id" />
 
             <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar comentário">
         }
@@ -76,7 +76,7 @@
 
         @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
         {
-            <input type="hidden" name="id_produto" value=@ViewBag.produto.Id>
+            <input type="hidden" name="id_produto" value=@Model.Id>
             <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar para o carrinho">
         }
 
@@ -85,15 +85,12 @@
 <hr />
 
 <h2>Comentários</h2>
-@foreach (var item in @ViewBag.comentarios)
+@foreach (var item in Model.Comentarios)
 {
-    if (@item.Produto.Id == @ViewBag.produto.Id)
-    {
-        <div class="container">
-            <h4>@item.Nome</h4>
-            <p>@item.Coment</p>
-        </div>
-    }
+    <div class="">
+        <h4>@item.Nome</h4>
+        <p>@item.Texto</p>
+    </div>
 }
 
 <hr />
