@@ -6,7 +6,7 @@ O projeto criado usando a ferramenta ASP.Net MVC5, Razor e bootstrap. Construíd
 ## Iniciando o projeto
 Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar todas as configurações, aperte f5 para criar um servidor local e abrir o site no browser.
 
-### Prerequisitos
+### Pré requisitos
 - Sistema operacional windows.
 - Visual Studio, recomendado o 2017
 
