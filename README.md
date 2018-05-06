@@ -20,10 +20,10 @@ O projeto está sendo criado usando a ferramenta ASP.Net MVC5, Razor e bootstrap
 - Ao clicar no link há um redirecionamento para a página de login administrativo.
 
 ###### Melhorias para a página inicial
-> Melhor aplicação do bootstrap
-> Produtos dinamicos no jumbotron
-> Melhor responsividade
-> Listagem de produtos mais concisa
+- Melhor aplicação do bootstrap
+- Produtos dinamicos no jumbotron
+- Melhor responsividade
+- Listagem de produtos mais concisa
 
 ##### Página Login administrativo
 - O menu permanece o mesmo da página inicial.
