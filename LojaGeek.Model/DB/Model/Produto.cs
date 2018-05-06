@@ -15,6 +15,7 @@ namespace LojaGeek.Model.DB.Model
         public virtual Guid Id { get; set; }
         public virtual String Nome { get; set; }
         public virtual String Descricao { get; set; }
+        public virtual String Plataforma { get; set; }
         public virtual int Estoque { get; set; }
         public virtual double Preco { get; set; }
         public virtual DateTime DataModificacao { get; set; }
@@ -39,6 +40,7 @@ namespace LojaGeek.Model.DB.Model
 
             Property(x => x.Nome);
             Property(x => x.Descricao);
+            Property(x => x.Plataforma);
             Property(x => x.Estoque);
             Property(x => x.Preco);
             Property(x => x.DataModificacao);

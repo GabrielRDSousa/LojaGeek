@@ -158,6 +158,8 @@ namespace LojaGeek.Controllers
                 }
 
                 Session["carrinho"] = null;
+                Session["sucesso"] = null;
+                Session["erro"] = null;
 
                 return View(compra);
             }
