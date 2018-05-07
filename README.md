@@ -176,7 +176,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Melhorar mensagens de erro e sucesso.
 - [ ] Criar view de carrinho vazio.
 
-!Página do carrinho sem cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png)
+![Página do carrinho sem cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png)
 										**Página do carrinho sem cliente logado**
 
 ![Página do carrinho com cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20logado.png)
