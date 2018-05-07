@@ -14,8 +14,8 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 ### Geral
 - Site com estética baseada na bibliteca bootstrap
 - Funcionamento aproximado de um site comum de e-commerce
-- Um visitante pode navegar pela vitrine, pode criar um carrinho,, pode ver os detalhes de um produto, pode comentar em um produto, só é limitada a compra.
-- Um administrador pode fazer login, pode fazer tudo que um cliente pode fazer, exceto compra. Além de poder controlar o estoque através da página dedicada a esta função
+- Um visitante pode navegar pela vitrine, pode criar um carrinho, pode ver os detalhes de um produto, pode comentar em um produto, só é limitada a compra.
+- Um administrador pode fazer login, pode fazer tudo que um cliente pode fazer, exceto compra. Além de poder controlar o estoque através da página dedicada a esta função.
 #### Melhorias para o sistema em geral
 - [ ] Melhor aplicação do bootstrap
 - [ ] Melhor responsividade
@@ -25,7 +25,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Criação de uma ferramenta de administração Para colocar jogos em vitrine de destaque
 
 ### Página Inicial
-- A página inicial consiste em um menu branco superior com o nome da loja e alguns item de menu.
+- A página inicial possuium menu fixo superior com o nome da loja e alguns item de menu.
 - O nome da loja é clicável e leva a página incial, não importa aonde esteja no sistema.
 - Análogo ao lado possui um botão com um símbolo em formato de casinha, que faz a mesma ação da logo.
 - O botão cadastrar leva a um formulário para cadastro de um novo cliente.
@@ -53,7 +53,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Limitar o uso de acento no corpo da senha gerada
 
 ### Página Estoque
-- O menu agora é o admnistrativo, contendo um opção de sair e de navegação para a página de estoque, além das pção da logo e do símbolo de casa do menu já citado na página inicial.
+- O menu agora é o admnistrativo, contendo um opção de sair e de navegação para a página de estoque, além das opções da logo e do símbolo de casa do menu já citado na página inicial.
 - Há um botão Novo produto que leva a uma página de formulário para adição do produto.
 - Abaixo há uma tabela com título produtos, uma linha de títulos, contendo foto, nome ,preço, ~~quantidade em~~ estoque , ativo e ~~ações~~.
 - ~~Na coluna foto é carregado uma pequena thumbnail da foto associada ao produto.~~
@@ -132,7 +132,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - Uma tabela com título carrinho.
 - Uma coluna com cabeçalho produto, ao qual possui o nome do produto.
 - Uma coluna com cabeçalho preço, ao qual possui o preço do produto vezes a quantidade.
-- Uma coluna com cabeçalho quantidade, ao qual possui a quantidade atual do produto, e um select com o número máximo do estoque do produto, um botão de atualizar total. Que ao apertar atualiza a quantidade e os preços.
+- Uma coluna com cabeçalho quantidade, ao qual possui a quantidade atual do produto, e um select com o número máximo do estoque do produto, um botão de atualizar total, que ao apertar atualiza a quantidade e os preços.
 - Uma coluna com cabeçalho ~~ações~~, ao qual possui botão "Detalhes do produto", ao qual leva ao detalhe do produto, botão de retirar produto do carrinho.
 - Uma área para o Valor Total do carrinho.
 - Uma área para aplicar um cupom, com mensagem de erro caso não seja possível aplicar o cupom.
@@ -144,7 +144,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Criar view de carrinho vazio.
 
 ### Página de compra
-- Uma página estática com texto falando o nome, cpf, com data da compra, items comprado com suas quantidades e preço, calor total da compra e instruções finais da compra.
+- Uma página estática com texto falando o nome, cpf, com data da compra, items comprado com suas quantidades e preço, valor total da compra e instruções finais da compra.
 #### Melhorias para a página de compra
 - [ ] Colocar uma view intermediária para cadastro de endereço.
 - [ ] Fazer uma aparência de nota fiscal.
