@@ -17,7 +17,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - Um visitante pode navegar pela vitrine, pode criar um carrinho, pode ver os detalhes de um produto, pode comentar em um produto, só é limitada a compra.
 - Um administrador pode fazer login, pode fazer tudo que um cliente pode fazer, exceto compra. Além de poder controlar o estoque através da página dedicada a esta função.
 - O banco de dados está modelado de forma que o DER é este apresentado abaixo:
+
 ![DER](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/DER.PNG)
+**DER do sistema sendo desenvolvido** 
 
 #### Melhorias para o sistema em geral
 - [ ] Melhor aplicação do bootstrap
@@ -46,6 +48,12 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Produtos dinamicos no jumbotron
 - [ ] Listagem de produtos mais concisa
 
+![Página inicial sem nenhum cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial.png)
+**Página inicial sem nenhum cliente logado**
+
+![Página inicial com um cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial%20com%20cliente%20logado.png)
+**Página inicial com um cliente logado**
+
 ### Página Login administrativo
 - O menu permanece o mesmo da página inicial.
 - Há um formulário centrlaizado com apenaas um input, um label e um botão.
@@ -54,6 +62,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - Se a senha for correta será levado a tela de gerenciamento de estoque.
 #### Melhorias para a pagina Login administrativo
 - [ ] Limitar o uso de acento no corpo da senha gerada
+
+![Página login administrativo](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20aadministrativo.png)
+**Página login administrativo**
 
 ### Página Estoque
 - O menu agora é o admnistrativo, contendo um opção de sair e de navegação para a página de estoque, além das opções da logo e do símbolo de casa do menu já citado na página inicial.
@@ -73,6 +84,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Impedir o acesso de páginas administrativas através de link direto.
 - [ ] Criar área para criação de cupoms.
 
+![Página de estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Controle%20de%20estoque.png)
+**Página de estoque**
+
 ### Página Cadastro de Novo Produto
 - Um formulário com título para cadastrar produto.
 - Formulário contém nome, descrição, plataforma, estoque, preço, foto e um checkbox ativo e um botão para salvar produto
@@ -87,6 +101,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Corrigir o link que está riscado acima.
 - [ ] Modificar modelo para adicionar estilo do jogo.
 
+![Página Cadastro de Novo Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20produto.png)
+**Página Cadastro de Novo Produto**
+
 ### Página Adicionar estoque
 - Um formulário com título para Adicionar Estoque.
 - Formulário contém nome, descrição, preenchido com o produto a ser adicionado no estoque.
@@ -96,6 +113,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 #### Melhorias para a página Adicionar estoque
 - [ ] Zerar os valores do inputs de estoque e preço para melhorar a usabilidade.
 - [ ] Impedir input de números negativos.
+
+![Página Adicionar estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Repor%20estoque.png)
+**Página Adicionar estoque**
 
 ### Página Cadastrar Cliente
 - Um formulário com título para Cadastro Cliente.
@@ -109,6 +129,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Input para confirmar senha.
 - [ ] Melhorar interesses.
 
+![Página Cadastrar Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20cliente.png)
+**Página Cadastrar Cliente**
+
 ### Página Login Cliente
 - Possui um formulário com título login.
 - Input para email e senha.
@@ -120,6 +143,10 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Mensagem de erro caso login não bem sucessido.
 - [ ] Link para cadastar cliente.
 
+![Página Login Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20cleinte.png)
+**Página Login Cliente**
+
+
 ### Página Detalhe Produto
 - A tela traz todas informações do produto exceto se está ativo ou não, pois isso é exclusivo da administração.
 - Possui um textarea para colocar um comentário.
@@ -130,6 +157,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 #### Melhorias para a página Detalhe Produto
 - [ ] Corrigir botão de enviar para o carrinho.
 - [ ] Aproximar detalhe de outros e-commerce.
+
+![Página Detalhe Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Detalhes%20do%20produto.png)
+**Página Detalhe Produto**
 
 ### Página do carrinho
 - Uma tabela com título carrinho.
@@ -146,11 +176,20 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Melhorar mensagens de erro e sucesso.
 - [ ] Criar view de carrinho vazio.
 
+!Página do carrinho sem cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png)
+**Página do carrinho sem cliente logado*
+
+![Página do carrinho com cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20logado.png)
+**Página do carrinho com cliente logado*
+
 ### Página de compra
 - Uma página estática com texto falando o nome, cpf, com data da compra, items comprado com suas quantidades e preço, valor total da compra e instruções finais da compra.
 #### Melhorias para a página de compra
 - [ ] Colocar uma view intermediária para cadastro de endereço.
 - [ ] Fazer uma aparência de nota fiscal.
+
+![Página de compra](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Comprovante%20de%20compra.png)
+**Página de compra**
 
 ## Construído com as ferramentas
 * [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - O framework back-end utilizado
