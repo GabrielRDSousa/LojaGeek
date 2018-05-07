@@ -16,6 +16,9 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - Funcionamento aproximado de um site comum de e-commerce
 - Um visitante pode navegar pela vitrine, pode criar um carrinho, pode ver os detalhes de um produto, pode comentar em um produto, só é limitada a compra.
 - Um administrador pode fazer login, pode fazer tudo que um cliente pode fazer, exceto compra. Além de poder controlar o estoque através da página dedicada a esta função.
+- O banco de dados está modelado de forma que o DER é este apresentado abaixo:
+![DER](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/DER.PNG)
+
 #### Melhorias para o sistema em geral
 - [ ] Melhor aplicação do bootstrap
 - [ ] Melhor responsividade
