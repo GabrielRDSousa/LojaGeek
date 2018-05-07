@@ -19,7 +19,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - O banco de dados está modelado de forma que o DER é este apresentado abaixo:
 
 ![DER](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/DER.PNG)
-**DER do sistema sendo desenvolvido** 
+										**DER do sistema sendo desenvolvido** 
 
 #### Melhorias para o sistema em geral
 - [ ] Melhor aplicação do bootstrap
@@ -49,10 +49,10 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Listagem de produtos mais concisa
 
 ![Página inicial sem nenhum cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial.png)
-**Página inicial sem nenhum cliente logado**
+										**Página inicial sem nenhum cliente logado**
 
 ![Página inicial com um cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial%20com%20cliente%20logado.png)
-**Página inicial com um cliente logado**
+										**Página inicial com um cliente logado**
 
 ### Página Login administrativo
 - O menu permanece o mesmo da página inicial.
@@ -64,7 +64,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Limitar o uso de acento no corpo da senha gerada
 
 ![Página login administrativo](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20aadministrativo.png)
-**Página login administrativo**
+										**Página login administrativo**
 
 ### Página Estoque
 - O menu agora é o admnistrativo, contendo um opção de sair e de navegação para a página de estoque, além das opções da logo e do símbolo de casa do menu já citado na página inicial.
@@ -85,7 +85,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Criar área para criação de cupoms.
 
 ![Página de estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Controle%20de%20estoque.png)
-**Página de estoque**
+										**Página de estoque**
 
 ### Página Cadastro de Novo Produto
 - Um formulário com título para cadastrar produto.
@@ -102,7 +102,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Modificar modelo para adicionar estilo do jogo.
 
 ![Página Cadastro de Novo Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20produto.png)
-**Página Cadastro de Novo Produto**
+										**Página Cadastro de Novo Produto**
 
 ### Página Adicionar estoque
 - Um formulário com título para Adicionar Estoque.
@@ -115,7 +115,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Impedir input de números negativos.
 
 ![Página Adicionar estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Repor%20estoque.png)
-**Página Adicionar estoque**
+										**Página Adicionar estoque**
 
 ### Página Cadastrar Cliente
 - Um formulário com título para Cadastro Cliente.
@@ -130,7 +130,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Melhorar interesses.
 
 ![Página Cadastrar Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20cliente.png)
-**Página Cadastrar Cliente**
+										**Página Cadastrar Cliente**
 
 ### Página Login Cliente
 - Possui um formulário com título login.
@@ -144,7 +144,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Link para cadastar cliente.
 
 ![Página Login Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20cleinte.png)
-**Página Login Cliente**
+										**Página Login Cliente**
 
 
 ### Página Detalhe Produto
@@ -159,7 +159,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Aproximar detalhe de outros e-commerce.
 
 ![Página Detalhe Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Detalhes%20do%20produto.png)
-**Página Detalhe Produto**
+										**Página Detalhe Produto**
 
 ### Página do carrinho
 - Uma tabela com título carrinho.
@@ -177,10 +177,10 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Criar view de carrinho vazio.
 
 !Página do carrinho sem cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png)
-**Página do carrinho sem cliente logado*
+										**Página do carrinho sem cliente logado**
 
 ![Página do carrinho com cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20logado.png)
-**Página do carrinho com cliente logado*
+										**Página do carrinho com cliente logado**
 
 ### Página de compra
 - Uma página estática com texto falando o nome, cpf, com data da compra, items comprado com suas quantidades e preço, valor total da compra e instruções finais da compra.
@@ -189,7 +189,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 - [ ] Fazer uma aparência de nota fiscal.
 
 ![Página de compra](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Comprovante%20de%20compra.png)
-**Página de compra**
+										**Página de compra**
 
 ## Construído com as ferramentas
 * [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - O framework back-end utilizado
@@ -202,6 +202,7 @@ Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar toda
 ## Autores
 * **Gabriel Ramos de Sousa** - *Atual mantenedor do projeto, Mauntenção do sistema, refatoração e continuação de senvolvimento* - [GabrielDSousa](https://github.com/GabrielDSousa)
 * **Danilo Itagyba** - *Iníciou o projeto* - [itagyba](https://github.com/itagyba)
+* **João Paulo** - *Auxiliou na documentação* - [JoaoPaulo333](https://github.com/JoaoPaulo333)
 
 ## Licensa
 This project is licensed under the MIT License
