@@ -30,3 +30,58 @@ textarea {
 .img-responsive {
     margin: 0 auto;
 }
+
+.space-between-flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.cor-menu {
+    background: #2E0927;
+}
+
+.cor-menu ul li a {
+    color: #FF8C00!important;
+    font-size: 1.4em;
+    font-weight:600;
+}
+
+.center{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.item a {
+    text-decoration: none;
+    color: #2E0927;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.logo {
+    color: #FF8C00 !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6em;
+    text-align: center;
+    font-weight:700;
+}
+
+.submenu {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#correcao-posicao-dropdown{
+    margin-top:11%;
+}
+
