@@ -17,22 +17,35 @@ namespace LojaGeek.Controllers
             return View();
         }
 
-        public ActionResult EntrarCliente()
+        public ActionResult EntrarCliente(string retorno)
         {
+            ViewBag.retorno = retorno;
             return View();
         }
 
-        public ActionResult Logar(string email, string senha)
+        public ActionResult Logar(string email, string senha, string retorno)
         {
             LoginUtils.Logar(email, senha);
 
             if (LoginUtils.Cliente != null)
             {
-                return RedirectToAction("Index", "Home");
+                if (retorno.Equals("index"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if(retorno.Equals("compra"))
+                {
+                    return RedirectToAction("Index", "Endereco", new { escolha = "true" });
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                
             }
             else
             {
-                return RedirectToAction("EntrarCliente");
+                return RedirectToAction("EntrarCliente", new { retorno = retorno });
             }
         }
 

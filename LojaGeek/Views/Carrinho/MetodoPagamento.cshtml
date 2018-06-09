@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "MetodoPagamento";
+    var resposta = Session["resposta_cartao"];
+    LojaGeek.Model.DB.Model.Carrinho carrinho = (LojaGeek.Model.DB.Model.Carrinho) Session["carrinho"];
+}
+<div class="">
+    <h2 style="text-align:center">MetodoPagamento</h2>
+    <div class="row space-between-flex">
+        <div class="col-lg-9">
+            <div class="row space-between-flex">
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <h4><strong>Boleto</strong></h4>
+                        <div class="card-body">
+                            <p><strong>Ganhe <em>10%</em> de desconto nessa modalidade</strong></p>
+                        </div>
+                        <div class="card-footer space-between-flex" style="width:90%">
+                            @Html.ActionLink("Pagar com boleto bancário", "Resumo", "Carrinho",new { metodo = "boleto"}, new { @class = "btn btn-acao" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                            <h4><strong>Cartão de crédito</strong></h4>
+                        
+                                @using (Html.BeginForm("Cartao", "Carrinho", FormMethod.Post, new { @class = "form-group" }))
+                                {
+                                    <div class="card-body">
+                                        <p><strong>Divida em até <em>10 vezes sem juros</em> nessa modalidade</strong></p>
+
+                                        <input type="number" class="form-control" required name="num_cartao" placeholder="Número do cartão [Apenas números]"/>
+                                        <br />
+                                        <input type="text" class="form-control" required name="nome_cartao" placeholder="Nome como está no cartão"/>
+                                        <br />
+                                        <input type="text" class="form-control" required maxlength="6" name="vencimento" placeholder="Data de vencimento do cartão [yyyymm]"/>
+                                        <br />
+                                        <input type="number" class="form-control" required maxlength="3" name="cod_seguranca" placeholder="Código de segurança"/>
+                                        <br />
+                                        <select required name="parcelas" class="form-control">
+                                            <option selected disabled>Quantas parcelas</option>
+                                            @for(var i = 1; i <= 10; i++)
+                                            {
+                                                <option value="@i">@i x R$@(Math.Round(carrinho.ValorTotal/i))</option>
+                                            }
+                                        </select>
+                                        <br />
+                                        <input type="submit" value="Pagar com cartão de crédito" class="btn btn-acao"/>
+                                    </div>
+                                    if(resposta != null)
+                                    {
+                                        if(resposta.Equals("Cartão cadastrado com sucesso"))
+                                        {
+                                            <div class="card-footer space-between-flex alert alert-success" role="alert" style="width:90%">
+                                                <p>@resposta</p>
+                                            </div>
+                                            <div class="center">
+                                                @Html.ActionLink("Continuar a compra", "Resumo", "Carrinho", new { metodo = "cartao" }, new { @class = "btn btn-acao" })
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="card-footer space-between-flex alert alert-danger" role="alert" style="width:90%">
+                                                <p>@resposta</p>
+                                            </div>
+                                        }
+
+                                    }
+
+                                }
+                        
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

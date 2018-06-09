@@ -5,113 +5,126 @@
 }
 
 <h2><i class="glyphicon glyphicon-shopping-cart"></i> Carrinho</h2>
-
-<table class="table table-responsive table-bordered">
-    @foreach (var item in Model.Items)
-    {
-
-        <tr>
-            <th>
-                Produto
-            </th>
-            <th>
-                Preço
-            </th>
-            <th>
-                Quantidade
-            </th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Produto.Nome)
-            </td>
-            <td>
-                @(item.Produto.Preco * item.Quantidade)
-            </td>
-            <td>
-                @using (Html.BeginForm("AlterarQuantidade", "Carrinho", FormMethod.Post))
-                {
-                    <h6>Quantidade atual: @item.Quantidade</h6>
-                    <select id="quantidade_nova" name="quantidade_nova" class="dropdown">
-                        @for(var i=1; i<= item.Produto.Estoque; i++)
-                        {
-                            if(item.Produto.Estoque == 1)
-                            {
-                                <option value="1" class="alert-info" >Ultimo do estoque</option>
+<div class="">
+        <div class="row">
+            <div class="col-sm-10 col-md-12">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantitade</th>
+                            <th class="text-center">Preço</th>
+                            <th class="text-center">Total</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+@foreach (var item in Model.Items)
+{
+                        <tr>
+                            <td class="col-sm-8 col-md-4">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#">
+                                        @if (item.Produto.Foto != null)
+                                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src=" " data-holder-rendered="true">}
+                                        else
+                                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">@Html.ActionLink(item.Produto.Nome, "DetalheProduto")</h4>
+                                        <h5 class="media-heading"> Plataforma: @Html.ActionLink(item.Produto.Plataforma, "DetalheProduto")</h5>
+                                        <span>Qtd em estoque: </span><span class="text-success"><strong>@item.Produto.Estoque</strong></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                @using (Html.BeginForm("AlterarQuantidade", "Carrinho", FormMethod.Post,new { @class= "form-group" }))
+                                {
+                                    <select id="quantidade_nova" name="quantidade_nova" class="dropdown form-control">
+                                        <option value="@item.Quantidade" class="dropdown-header" disabled="disabled" selected="selected">@item.Quantidade</option>
+                                        @for (var i = 1; i <= item.Produto.Estoque; i++)
+                                        {
+                                            if (item.Produto.Estoque == 1)
+                                            {
+                                                <option value="1" class="alert-info">Ultimo do estoque</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i" class="dropdown-header">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="submit" value="Atualizar Total" class="btn btn-default" />
+                                }
+                            </td>
+                            <td class="col-sm-1 col-md-2 text-center"><strong>R$ @item.Produto.Preco</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>R$ @(item.Produto.Preco * item.Quantidade)</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                @Html.ActionLink("X", "RetirarItem", "Carrinho", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
                             }
-                            else
+                        
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                            @using (Html.BeginForm("GravarCupom", "Carrinho", FormMethod.Post))
                             {
-                                <option value="@i" class="dropdown-header">@i</option>
+                                <label for="cupom">Cupom</label>
+                                if (Model.Cupom != null)
+                                {
+                                    <input type="text" name="cupom" id="cupom" value="@Model.Cupom.Nome" disabled class="form-control" />
+                                }
+                                else
+                                {
+                                    <input type="text" name="cupom" id="cupom" value="" class="form-control" />
+                                    <input type="submit" value="Validar" class="btn btn-default" />
+                                }
+
+                                if (ViewBag.erro != null)
+                                {
+                                    <br />
+                                    <div class="alert alert-danger" style="width:25%;">
+                                        <p>@ViewBag.erro</p>
+                                    </div>
+                                }
                             }
-                        }
-                    </select>
-                    <input type="hidden" name="id" value="@item.Id"/>
-                    <input type="submit" value="Atualizar Total" class="btn btn-default"/>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Detalhes do produto", "Detalhes", "Produto",  new { id = item.Produto.Id }, new { @class = "btn btn-info"})
-                @Html.ActionLink("X", "RetirarItem", "Carrinho",new { id = item.Id },new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
-</table>
-
-<div style="display: flex; justify-content: space-between; align-items:center">
-    <div>
-        <div class="h4" style="text-align:center">
-            @Html.DisplayNameFor(model => model.ValorTotal) <br /> @Html.DisplayFor(modelItem => Model.ValorTotal)
+                        </td>
+                        <td>
+                            @using (Html.BeginForm("CalcularFrete", "Carrinho", FormMethod.Post))
+                            {
+                                <label for="frete">CalcularFrete</label>
+                                <input type="number" name="frete" id="frete" value="" class="form-control" placeholder="Apenas os numeros" maxlength="8" />
+                                <input type="submit" value="Calcular" class="btn btn-default" />
+                                if (ViewBag.sucesso != null)
+                                {
+                                    <br />
+                                    <div class="alert alert-success">
+                                        <p>@ViewBag.sucesso</p>
+                                    </div>
+                                }
+                            }
+                        </td>
+                        <td>   </td>
+                        <td><h5>Subtotal<br>Estimativa do envio</h5><h3>Total</h3></td>
+                        <td class="text-right"><h5><strong>R$ @Model.ValorTotal<br>R$ @Model.ValorFrete</strong></h5><h3>R$ @(Model.ValorTotal + Model.ValorFrete)</h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                            @Html.ActionLink("Continuar comprando", "Index", "Home", null, new { @class = "btn btn-default" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Finalizar compra", "Comprar", "Carrinho", null, new { @class = "btn btn-default btn-acao" })
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
-    <div>
-        <div class="h4" style="text-align:center">
-            @using (Html.BeginForm("GravarCupom", "Carrinho", FormMethod.Post))
-            {
-                <label for="cupom">Cupom</label>
-                if (Model.Cupom != null) {
-                    <input type="text" name="cupom" id="cupom" value ="@Model.Cupom.Nome" disabled class="form-control" />
-                }
-                else {
-                    <input type="text" name="cupom" id="cupom" value ="" class="form-control" />
-                    <input type="submit" value="Validar" class="btn btn-default" />
-                }
-
-                if (ViewBag.erro != null)
-                {
-                    <div class="danger panel-danger text-danger">
-                        <p>@ViewBag.erro</p>
-                    </div>
-                }
-                }
-        </div>
-    </div>
-    <div>
-        <div class="h4" style="text-align:center">
-            @using (Html.BeginForm("CalcularFrete", "Carrinho", FormMethod.Post))
-            {
-                <label for="frete">CalcularFrete</label>
-                <input type="number" name="frete" id="frete" value="" class="form-control" placeholder="Apenas os numeros" maxlength="8"/>
-                <input type="submit" value="Calcular" class="btn btn-default" />
-                if (ViewBag.sucesso != null)
-                {
-                    <div class="success panel-success text-success">
-                        <p>@ViewBag.sucesso</p>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-</div>
-
-<div>
-    @if (Session["usuario"] != null)
-    {
-        @Html.ActionLink("Comprar", "Comprar", "Carrinho", null, new { @class = "btn btn-danger" })
-    }
-    else
-    {
-        @Html.ActionLink("Cadastrar", "CadastrarCliente", "Cliente", null , new { @class = "btn btn-info" })
-        @Html.ActionLink("Entrar", "EntrarCliente", "Cliente", null, new { @class = "btn btn-default" })
-    }
 </div>

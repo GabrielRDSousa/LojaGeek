@@ -1,0 +1,138 @@
+﻿@model LojaGeek.Model.DB.Model.Endereco
+
+
+@{
+    ViewBag.Title = "Endereco";
+}
+
+<h2>Endereço</h2>
+
+@if (ViewBag.enderecos == null)
+{
+    <div>
+        <h4>Não há endereços cadastrados</h4>
+    </div>
+}
+else
+{
+    <div class="">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var endereco in ViewBag.enderecos)
+                    {
+                        <div class="col-lg-3 col-md-6 mb-4 cartao">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <p>Logradorouro: @endereco.Logradouro, num: @endereco.Numero</p>
+                                    @if (endereco.Complemento != null)
+                                    {
+                                        <p>Complemento: @endereco.Complemento</p>
+                                    }
+                                    <p>Cidade: @endereco.Cidade - @endereco.Uf, bairro: @endereco.Bairro</p>
+                                </div>
+                                @if (ViewBag.Escolha.Equals("true"))
+                                {
+                                    <div class="card-footer space-between-flex" style="width:90%">
+                                        @Html.ActionLink("Selecionar este endereço", "MetodoPagamento", "Carrinho", new { endereco_escolhido = endereco.Id }, new { @class = "btn btn-acao" })
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 cartao center">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            @using (Html.BeginForm("CadastrarEndereco", "Endereco", FormMethod.Post, new { @class = "form-group" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <h4>Novo endereco</h4>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Uf, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Uf, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="hidden" name="e" id="e" value=@ViewBag.Escolha />
+                                            <input type="submit" value="Gravar novo endereço" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="card-footer space-between-flex" style="width:90%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

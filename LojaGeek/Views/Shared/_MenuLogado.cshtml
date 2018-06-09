@@ -1,26 +1,22 @@
 ﻿@using LojaGeek.Model.Utils
 
-<div class="space-between-flex">
+<div>
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home" })</li>
+        <li><input type="text" name="busca" value="" placeholder="Qual produto que você deseja ?" id="barra-de-pesquisa" class="form-control form-control-lg" style="width:120%; text-align:center;" /></li>
     </ul>
-
-    <div class="input-group">
-        <input type="text" name="busca" value="" placeholder="Qual produto que você deseja ?" class="form-control form-control-lg" style="width:120%; text-align:center" />
-    </div>
-
     <ul class="nav navbar-nav navbar-right">
-        <li class="item" id="correcao-posicao-dropdown">
+        <li id="correcao-posicao-dropdown">
             <div class="dropdown show">
                 <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @LoginUtils.Cliente.Nome <i class="glyphicon glyphicon-chevron-down" style="font-size:.5em;"></i>
+                    @LoginUtils.Cliente.Nome <i class="glyphicon glyphicon-chevron-down" style="font-size:.5em; margin-right:.5em;"></i>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div style="display:inline-grid;">
-                        <div class="container">@Html.ActionLink("Ver perfil", "PerfilCliente", "Cliente", null, new { @class = "dropdown-item" })</div>
-                        <div class="container">@Html.ActionLink("Compras feitas", "ComprasCliente", "Cliente", null, new { @class = "dropdown-item" })</div>
-                        <div class="container">@Html.ActionLink("Sair", "DeslogarCliente", "Cliente", null, new { @class = "dropdown-item" })</div>
+                        <div>@Html.ActionLink("Ver perfil", "PerfilCliente", "Cliente")</div>
+                        <div>@Html.ActionLink("Compras feitas", "ComprasCliente", "Cliente")</div>
+                        <div>@Html.ActionLink("Sair", "DeslogarCliente", "Cliente")</div>
                     </div>
                 </div>
             </div>
@@ -29,3 +25,5 @@
         <li class="pull-right">@Html.ActionLink(" ", "Index", "Carrinho", null, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
     </ul>
 </div>
+
+

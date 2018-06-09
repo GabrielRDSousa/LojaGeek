@@ -38,7 +38,6 @@ namespace LojaGeek.Model.DB.Model
             Property(x => x.Uf);
 
             ManyToOne(x => x.Cliente, m => {
-                m.Unique(true);
                 m.Column("ClienteId");
                 m.Lazy(LazyRelation.NoLazy);
                 m.Cascade(Cascade.Refresh);

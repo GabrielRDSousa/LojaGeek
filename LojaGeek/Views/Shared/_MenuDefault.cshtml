@@ -1,18 +1,15 @@
-﻿<div class="space-between-flex">
+﻿<div>
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home" })</li>
+        <li><input type="text" name="busca" value="" placeholder="Qual produto que você deseja ?" id="barra-de-pesquisa" class="form-control form-control-lg" style="width:120%; text-align:center;" /></li>
     </ul>
-
-    <div>
-        <input type="text" name="busca" value="" placeholder="Qual produto que você deseja ?" class="form-control form-control-lg" style="width:120%; text-align:center"/>
-    </div>
-
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Cadastrar", "CadastrarCliente", "Cliente")</li>
         <li>@Html.ActionLink("Entrar", "EntrarCliente", "Cliente")</li>
-        <li class="pull-right">@Html.ActionLink(" ", "Index", "Carrinho", null, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+        <li class="pull-right">@Html.ActionLink(" ", "Index", "Carrinho", new { retorno = "index"}, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
     </ul>
 </div>
+
 @*<ul class="nav navbar-nav">
     <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
 

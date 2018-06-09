@@ -14,6 +14,8 @@ namespace LojaGeek.Model.DB.Model
         public virtual Cliente Cliente { get; set; }
         public virtual Endereco EnderecoEntrega { get; set; }
         public virtual DateTime DataDaCompra { get; set; }
+        public virtual String MetodoDePagamento { get; set; }
+        public virtual int QtdParcelas { get; set; }
         public virtual Carrinho Carrinho { get; set; }
 
         public Compra()
@@ -27,6 +29,8 @@ namespace LojaGeek.Model.DB.Model
             {
                 Id(x => x.Id, m => m.Generator(Generators.Guid));
                 Property(x => x.DataDaCompra);
+                Property(x => x.MetodoDePagamento);
+                Property(x => x.QtdParcelas);
 
                 ManyToOne(x => x.Cliente, m =>
                 {

@@ -1,6 +1,11 @@
 ﻿<ul class="nav navbar-nav">
-    <li class="active">@Html.ActionLink(" ", "Index", "Home",null, new { @class = "glyphicon glyphicon-home" })</li>
-    <li class="panel-info">@Html.ActionLink("Estoque", "Estoque", "Administrativo")</li>
+    <li>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home" })</li>
+    <li class="panel-info">@Html.ActionLink("Controle de Estoque", "Estoque", "Administrativo")</li>
+    <li class="panel-info">@Html.ActionLink("Controle de Promoções", "Estoque", "Administrativo")</li>
+    <li class="panel-info">@Html.ActionLink("Controle de Cupons", "Estoque", "Administrativo")</li>
+    <li class="panel-info">@Html.ActionLink("Produtos em Destaque", "Estoque", "Administrativo")</li>
+    <li class="panel-info">@Html.ActionLink("Compras Realizadas", "Estoque", "Administrativo")</li>
+    <li class="panel-info">@Html.ActionLink("Notas Fiscais", "Estoque", "Administrativo")</li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
     <li>@Html.ActionLink("Sair", "DeslogarAdmin", "Administrativo")</li>

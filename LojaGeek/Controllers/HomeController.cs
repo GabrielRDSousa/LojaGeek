@@ -26,7 +26,7 @@ namespace LojaGeek.Controllers
             var produtos = new List<Produto>();
             foreach (Produto produto in produtosAux)
             {
-                if (produto.Ativo)
+                if (produto.Ativo && produto.Estoque > 0)
                 {
                     produtos.Add(produto);
                 }

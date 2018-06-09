@@ -1,99 +1,79 @@
 ﻿@model LojaGeek.Model.DB.Model.Produto
 
 @{
-    ViewBag.Title = "Detalhes";
+    ViewBag.Title = Model.Nome;
 }
 
-<h2>Detalhes</h2>
+<!-- Page Content -->
+<div class="container">
 
-<div>
-    <h4>Produto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Nome
-        </dt>
+    <div class="row">
+        <p>
+            @Html.ActionLink("Voltar a página principal", "Index", "Home", null, new { @class="voltar"})
+        </p>
+        <!-- /.col-lg-3 -->
 
-        <dd>
-            @Model.Nome
-        </dd>
+        <div class="col-lg-9">
 
-        <dt>
-            Descrição
-        </dt>
-
-        <dd>
-            @Model.Descricao
-        </dd>
-
-        <dt>
-            Quantidade no estoque
-        </dt>
-
-        <dd>
-            @Model.Estoque
-        </dd>
-
-        <dt>
-            Preço Unitário
-        </dt>
-
-        <dd>
-            @Model.Preco
-        </dd>
-
-        <dt>
-            Foto
-        </dt>
-
-        <dd>
-            @if (Model.Foto != null)
-            {
-                <img src="@Model.Foto" alt="imagem do produto" />
-            }
-            else
-            {
-                <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
-            }
-        </dd>
-
-        @using (Html.BeginForm("GravarComentario", "Comentario", FormMethod.Post))
-        {
-            <div class="form-group">
-                <label for="comentario">Adicione seu comentário aqui:</label>
-                <textarea class="form-control" rows="5" name="comentario" required></textarea>
+            <div class="card mt-4">
+                    @if (Model.Foto != null)
+                    {
+                        <img src="@Model.Foto" alt="imagem do produto" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
+                    }
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Nome</h3>
+                    <h4>R$ @Model.Preco</h4>
+                    <p class="card-text">@Model.Descricao</p>
+                    @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value=@Model.Id>
+                        <input type="hidden" name="quantidade" value="1">
+                        <button type="submit" class="btn btn-default btn-acao-primario">Comprar</button>
+                    }
+                </div>
             </div>
+            <!-- /.card -->
+            <hr>
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    <h4><strong>Comentários</strong></h4>
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.Comentarios)
+                    {
+                        <p>@item.Texto</p>
+                        <small class="text-muted">Enviado por @item.Nome</small>
+                        <hr>
+                    }
 
-            <div class="form-group">
-                <input type="text" name="nome" placeholder="Qual o seu nome ?" required />
+                    @using (Html.BeginForm("GravarComentario", "Comentario", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label for="comentario">Adicione seu comentário aqui:</label>
+                            <textarea class="form-control" rows="5" cols="20" name="comentario" required></textarea>
+
+                            <input type="text" name="nome" class="form-control" placeholder="Qual o seu nome ?" required />
+                        </div>
+
+                        <input type="hidden" name="idProduto" value="@Model.Id" />
+
+                        <input type="submit" class="btn btn-md btn-default btn-acao" value="Enviar comentário">
+                        <br /><br />
+                    }
+                </div>
             </div>
+            <!-- /.card -->
 
-            <input type="hidden" name="idProduto" value="@Model.Id" />
+        </div>
+        <!-- /.col-lg-9 -->
 
-            <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar comentário">
-        }
-
-
-        @using (Html.BeginForm("ColocarCarrinho", "Carrinho", FormMethod.Post))
-        {
-            <input type="hidden" name="id_produto" value=@Model.Id>
-            <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar para o carrinho">
-        }
-
-    </dl>
-</div>
-<hr />
-
-<h2>Comentários</h2>
-@foreach (var item in Model.Comentarios)
-{
-    <div class="">
-        <h4>@item.Nome</h4>
-        <p>@item.Texto</p>
     </div>
-}
 
-<hr />
-<p>
-    @Html.ActionLink("Voltar a página principal", "Index", "Home")
-</p>
+</div>
+<!-- /.container -->
+
+

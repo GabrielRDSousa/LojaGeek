@@ -9,53 +9,66 @@
     <title>@ViewBag.Title - Loja Geek</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top glyphicon-record cor-menu">
-        <div class="container">    
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>@Html.ActionLink("Loja Geek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand, logo" })</h1><br />
+            <p>Jogos, Equipamentos e Acessórios</p>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse cor-menu">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="center">
-                    <div class="container" style="margin-top:8%;">@Html.ActionLink("Loja Geek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand, logo" })</div>
-                </div>
-            </div>            
-            <div id="navbar" class="navbar-collapse collapse">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
                 @if (LoginUtils.Admin == null)
+                {
+                    if (LoginUtils.Cliente == null)
                     {
-                        if (LoginUtils.Cliente == null)
-                        {
-                            @Html.Partial("_MenuDefault")
-                        }
-                        else
-                        {
-                            @Html.Partial("_MenuLogado")
-                        }
+                        @Html.Partial("_MenuDefault")
                     }
-                    @if (LoginUtils.Admin != null)
+                    else
                     {
-                        @Html.Partial("_MenuAdministrativo")
+                        @Html.Partial("_MenuLogado")
                     }
+                }
+                @if (LoginUtils.Admin != null)
+                {
+                    @Html.Partial("_MenuAdministrativo")
+                }
             </div>
         </div>
     </nav>
 
-    <div>
-        <nav class="navbar navbar-default navbar-fixed center">
-            <ul class="nav navbar-nav space-between-flex">
-                <div class="container"><li class="item">@Html.ActionLink("Playstation 4", "Index", "Busca", new { termo = "Playstation 4" })</li></div>
-                <div class="container"><li class="item">@Html.ActionLink("Playstation 3", "Index", "Busca", new { termo = "Playstation 3" })</li></div>
-                <div class="container"><li class="item">@Html.ActionLink("Xbox One", "Index", "Busca", new { termo = "Xbox One" })</li></div>
-                <div class="container"><li class="item">@Html.ActionLink("Xbox 360", "Index", "Busca", new { termo = "Xbox 360" })</li></div>
-                <div class="container"><li class="item">@Html.ActionLink("Switch", "Index", "Busca", new { termo = "Switch" })</li></div>
-                <div class="container"><li class="item">@Html.ActionLink("Nintendo 3DS", "Index", "Busca", new { termo = "Nintendo 3DS" })</li></div>
-            </ul>
-        </nav>
-    </div>
+    <nav class="navbar navbar-default center submenu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#consoles">
+                    <span class="item">Consoles <i class="glyphicon glyphicon-chevron-down" style="font-size:.8em; margin-top:.05em"></i></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="consoles">
+                <ul class="nav navbar-nav">
+                    <li class="item">@Html.ActionLink("Playstation 4", "Index", "Busca", new { termo = "Playstation 4" })</li>
+                    <li class="item">@Html.ActionLink("Playstation 3", "Index", "Busca", new { termo = "Playstation 3" })</li>
+                    <li class="item">@Html.ActionLink("Xbox One", "Index", "Busca", new { termo = "Xbox One" })</li>
+                    <li class="item">@Html.ActionLink("Xbox 360", "Index", "Busca", new { termo = "Xbox 360" })</li>
+                    <li class="item">@Html.ActionLink("Switch", "Index", "Busca", new { termo = "Switch" })</li>
+                    <li class="item">@Html.ActionLink("Nintendo 3DS", "Index", "Busca", new { termo = "Nintendo 3DS" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="body-content">
         @RenderBody()
@@ -66,8 +79,10 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

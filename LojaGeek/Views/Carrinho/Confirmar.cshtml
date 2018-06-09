@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Confirmar";
+}
+
+
+<div class="">
+    <h2 style="text-align:center">Obrigado por escolher a loja geek</h2>
+    <div class="row space-between-flex">
+        <div class="col-lg-9">
+            <div class="row space-between-flex">
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                Compra realizada com sucesso, agora só aguardar a confirmação de pagamento, que estaremos separando seu produto e lhe enviando o mais rápido possível.
+                            </div>
+                            <div class="card-footer space-between-flex" style="width:90%">
+                                @Html.ActionLink("Voltar para a página principal", "Index", "Home", new { metodo = ViewBag.metodo }, new { @class = "btn btn-acao container" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

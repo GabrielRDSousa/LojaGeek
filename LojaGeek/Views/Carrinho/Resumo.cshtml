@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Resumo";
+
+    LojaGeek.Model.DB.Model.Cliente cliente = (LojaGeek.Model.DB.Model.Cliente)Session["usuario"];
+    LojaGeek.Model.DB.Model.Endereco endereco = (LojaGeek.Model.DB.Model.Endereco)Session["endereco"];
+    LojaGeek.validarCartao.tDadosCartao cartao = (LojaGeek.validarCartao.tDadosCartao)Session["cartao"];
+    LojaGeek.Model.DB.Model.Carrinho carrinho = (LojaGeek.Model.DB.Model.Carrinho)Session["carrinho"];
+    if (carrinho.ValorFrete == 0)
+    {
+        carrinho.ValorFrete += 10;
+    }
+    if (carrinho.Cupom == null)
+    {
+        if (cartao == null)
+        {
+            LojaGeek.Model.DB.Model.Cupom cupom = new LojaGeek.Model.DB.Model.Cupom();
+            cupom.Desconto = 10;
+            cupom.Nome = "Boleto";
+            carrinho.Cupom = cupom;
+        }
+    } 
+}
+
+<div class="">
+    <h2 style="text-align:center">Resumo da compra</h2>
+    <div class="row space-between-flex">
+        <div class="col-lg-9">
+            <div class="row space-between-flex">
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <h4><strong>Items pedidos</strong></h4>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                @foreach (var item in carrinho.Items)
+                                {
+                                    <li class="list-group-item">@item.Quantidade x @item.Produto.Nome - R$ @(item.Produto.Preco * item.Quantidade)</li>
+                                }
+                                <li class="list-group-item">Frete: R$ @carrinho.ValorFrete</li>
+                                @if (carrinho.Cupom != null)
+                                {
+                                    <li class="list-group-item">
+                                        Cupom @carrinho.Cupom.Nome <br />
+                                        Desconto de @carrinho.Cupom.Desconto %
+                                    </li>
+                                }
+                                <li class="list-group-item">Total: R$ @carrinho.ValorTotal</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer space-between-flex" style="width:90%">
+
+                        </div>
+                    </div>
+                </div>
+
+
+                @if (cartao != null)
+                {
+                    <div class="col-lg-3 col-md-6 mb-4 cartao">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><strong>Informações do pagamento</strong></h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Número do cartão: @cartao.NumeroCartao</li>
+                                    <li class="list-group-item">Nome no cartão: @cartao.NomeCliente</li>
+                                    <li class="list-group-item">Quantidade de parcelas: @cartao.Parcelas x R$@(Math.Round(carrinho.ValorTotal / cartao.Parcelas))</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-lg-3 col-md-6 mb-4 cartao">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4><strong>Informações do pagamento</strong></h4>
+                                <p>Pagamento via boleto, assim que o pagamento for processado o boleto segue por email.</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4><strong>Endereço de entrega</strong></h4>
+                            <p>Logradorouro: @endereco.Logradouro, num: @endereco.Numero</p>
+                            @if (endereco.Complemento != null)
+                            {
+                                <p>Complemento: @endereco.Complemento</p>
+                            }
+                            <p>Cidade: @endereco.Cidade - @endereco.Uf, bairro: @endereco.Bairro</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container center">
+        <div>
+            @Html.ActionLink("Confirmar e finalizar a compra", "Confirmar", "Carrinho", new { metodo = ViewBag.metodo }, new { @class = "btn btn-acao container" })
+        </div>
+    </div>
+</div>
+
+
+
