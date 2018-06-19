@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LojaGeek.Model.DB.HistoricoDeBusca>
+
+@{
+    ViewBag.Title = "HistoricoDeBusca";
+}
+
+<h2>Historico De Busca</h2>
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pesquisa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pesquisa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.ActionLink("Refazer Pesquisa", "Index", new { busca=item.Pesquisa }, new { @class="btn btn-acao"})
+        </td>
+    </tr>
+}
+
+</table>

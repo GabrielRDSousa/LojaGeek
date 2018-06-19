@@ -12,8 +12,49 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 </head>
 <body>
+    <script type="text/javascript">
+        $(function () {
+            var displayMessage = function (message, msgType) {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr[msgType](message);
+            };
+
+            if ($('#success').val()) {
+                displayMessage($('#success').val(), 'success');
+            }
+            if ($('#info').val()) {
+                displayMessage($('#info').val(), 'info');
+            }
+            if ($('#warning').val()) {
+                displayMessage($('#warning').val(), 'warning');
+            }
+            if ($('#error').val()) {
+                displayMessage($('#error').val(), 'error');
+            }
+        });
+    </script>
+
+
     <div class="jumbotron">
         <div class="container text-center">
             <h1>@Html.ActionLink("Loja Geek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand, logo" })</h1><br />
@@ -59,12 +100,12 @@
             </div>
             <div class="collapse navbar-collapse" id="consoles">
                 <ul class="nav navbar-nav">
-                    <li class="item">@Html.ActionLink("Playstation 4", "Index", "Busca", new { termo = "Playstation 4" })</li>
-                    <li class="item">@Html.ActionLink("Playstation 3", "Index", "Busca", new { termo = "Playstation 3" })</li>
-                    <li class="item">@Html.ActionLink("Xbox One", "Index", "Busca", new { termo = "Xbox One" })</li>
-                    <li class="item">@Html.ActionLink("Xbox 360", "Index", "Busca", new { termo = "Xbox 360" })</li>
-                    <li class="item">@Html.ActionLink("Switch", "Index", "Busca", new { termo = "Switch" })</li>
-                    <li class="item">@Html.ActionLink("Nintendo 3DS", "Index", "Busca", new { termo = "Nintendo 3DS" })</li>
+                    <li class="item">@Html.ActionLink("Playstation 4", "Index", "Home", new { busca = "Playstation 4" }, null)</li>
+                    <li class="item">@Html.ActionLink("Playstation 3", "Index", "Home", new { busca = "Playstation 3" }, null)</li>
+                    <li class="item">@Html.ActionLink("Xbox One", "Index", "Home", new { busca = "Xbox One" }, null)</li>
+                    <li class="item">@Html.ActionLink("Xbox 360", "Index", "Home", new { busca = "Xbox 360" }, null)</li>
+                    <li class="item">@Html.ActionLink("Switch", "Index", "Home", new { busca = "Switch" })</li>
+                    <li class="item">@Html.ActionLink("Nintendo 3DS", "Index", "Home", new { busca = "Nintendo 3DS" }, null)</li>
                 </ul>
             </div>
         </div>
@@ -79,10 +120,22 @@
         </footer>
     </div>
 
-    
+    <input type="hidden" id="success"
+           value="@TempData["success"]" />
+    <input type="hidden" id="info"
+           value="@TempData["info"]" />
+    <input type="hidden" id="warning"
+           value="@TempData["warning"]" />
+    <input type="hidden" id="error"
+           value="@TempData["error"]" />
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

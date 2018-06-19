@@ -21,7 +21,20 @@ namespace LojaGeek.Model.DB.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao buscar pessoa pelo nome", ex);
+                throw new Exception("Erro ao buscar produto pelo nome", ex);
+            }
+        }
+
+        public IList<Produto> GetAllByPlataforma(String plataforma)
+        {
+            try
+            {
+                return this.Session.Query<Produto>()
+                           .Where(w => w.Plataforma.ToLower() == plataforma.Trim().ToLower()).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar produto pela plataforma", ex);
             }
         }
     }

@@ -32,11 +32,7 @@ namespace LojaGeek.Model.DB
         public InteresseRepository InteresseRepository { get; set; }
         public ItemCarrinhoRepository ItemCarrinhoRepository { get; set; }
         public ProdutoRepository ProdutoRepository { get; set; }
-        
-        
-        
-        
-
+        public HistoricoDeBuscaRepository HistoricoDeBuscaRepository { get; set; }
 
         private DbFactory()
         {
@@ -50,7 +46,8 @@ namespace LojaGeek.Model.DB
             EnderecoRepository = new EnderecoRepository(Session);
             InteresseRepository = new InteresseRepository(Session);
             ItemCarrinhoRepository = new ItemCarrinhoRepository(Session);
-            ProdutoRepository = new ProdutoRepository(Session);    
+            ProdutoRepository = new ProdutoRepository(Session);
+            HistoricoDeBuscaRepository = new HistoricoDeBuscaRepository(Session);
         }
 
         public static DbFactory Instance

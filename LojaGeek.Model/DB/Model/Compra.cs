@@ -17,6 +17,7 @@ namespace LojaGeek.Model.DB.Model
         public virtual String MetodoDePagamento { get; set; }
         public virtual int QtdParcelas { get; set; }
         public virtual Carrinho Carrinho { get; set; }
+        public virtual String Nfe { get; set; }
 
         public Compra()
         {
@@ -31,6 +32,7 @@ namespace LojaGeek.Model.DB.Model
                 Property(x => x.DataDaCompra);
                 Property(x => x.MetodoDePagamento);
                 Property(x => x.QtdParcelas);
+                Property(x => x.Nfe);
 
                 ManyToOne(x => x.Cliente, m =>
                 {

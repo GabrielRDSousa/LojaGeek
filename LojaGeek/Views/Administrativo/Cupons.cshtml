@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LojaGeek.Model.DB.Model.Cupom>
+
+@{
+    ViewBag.Title = "Cupons";
+}
+
+<h2>Cupons</h2>
+
+<div center>
+    <div>
+        @Html.ActionLink("Criar cupom", "CriarCupom", new {@class="btn btn-acao" })
+    </div>
+</div>
+
+<div class="center">
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoiUsado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desconto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FoiUsado)
+                </td>
+                <td>
+                    @Html.ActionLink("Desativar", "Desativar", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

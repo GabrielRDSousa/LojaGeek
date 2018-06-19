@@ -4,24 +4,26 @@
     ViewBag.Title = "Index";
 }
 <hr />
-<p>
-    @Html.ActionLink("Novo Produto", "CadastrarProduto", "Produto", null, new { @class = "btn btn-md btn-primary" })
+<div class="center">
+    <p>
+        @Html.ActionLink("Novo Produto", "CadastrarProduto", "Produto", null, new { @class = "btn btn-md btn-primary" })
 
-    @*@using (Html.BeginForm("BuscarPeloNome", "Administrativo", FormMethod.Get))
-    {
-        @Html.Editor("edtBusca")
-        <button type="submit" valur="Buscar" class="btn btn-primary">
-            <i class="glyphicon glyphicon-search"></i> Buscar
-        </button>
-    }*@
+        @*@using (Html.BeginForm("BuscarPeloNome", "Administrativo", FormMethod.Get))
+        {
+            @Html.Editor("edtBusca")
+            <button type="submit" valur="Buscar" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i> Buscar
+            </button>
+        }*@
 
-</p>
+    </p>
+</div>
 
-<div class="row">
+<div class="row center">
     <div class="col-lg-10">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                Produtos
+            <div class="panel-heading" style="text-align:center">
+                <strong>Produtos</strong>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -50,7 +52,10 @@
                             {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Foto)
+                                    @if (@item.Foto != null)
+                                    {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [100x100]" style="width: 100px; height: 100px;" src="@item.Foto" data-holder-rendered="true">}
+                                else
+                                    {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [100x100]" style="width: 100px; height: 100px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Nome)

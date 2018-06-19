@@ -49,6 +49,9 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Danzor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Danzor.1.6\lib\net451\Danzor.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.4.0.2\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -167,6 +170,7 @@
     <Compile Include="Controllers\CarrinhoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ComentarioController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InteressesController.cs" />
@@ -195,6 +199,7 @@
     </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\danfe\danfe.min.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -202,6 +207,7 @@
     <Content Include="Images\image-not-found.jpg" />
     <Content Include="Images\maxresdefault.jpg" />
     <Content Include="Images\super-mario-odyssey.jpg" />
+    <Content Include="NFE%27s\NFEPadrao.xml" />
     <Content Include="Scripts\gulpfile.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
     <Content Include="favicon.ico" />
@@ -217,6 +223,7 @@
     <None Include="Connected Services\ValidarCartao\Server.wsdl" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="NFE%27s\NFEDinamicaTeste.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -256,7 +263,6 @@
     <Content Include="Views\Produto\CadastrarProduto.cshtml" />
     <Content Include="Views\Administrativo\AdicionarEstoque.cshtml" />
     <Content Include="Views\Carrinho\Index.cshtml" />
-    <Content Include="Views\Carrinho\Comprar.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Carrinho\MetodoPagamento.cshtml" />
     <Content Include="Web References\validarCartao\Reference.map">
@@ -265,6 +271,20 @@
     </Content>
     <Content Include="Views\Carrinho\Resumo.cshtml" />
     <Content Include="Views\Carrinho\Confirmar.cshtml" />
+    <Content Include="Views\Compra\ComprasDoliente.cshtml" />
+    <Content Include="Views\Compra\Compras.cshtml" />
+    <Content Include="Views\Danfe\_transportador.cshtml" />
+    <Content Include="Views\Danfe\_imposto.cshtml" />
+    <Content Include="Views\Danfe\_faturas.cshtml" />
+    <Content Include="Views\Danfe\_destinatario.cshtml" />
+    <Content Include="Views\Danfe\_dados_produtos.cshtml" />
+    <Content Include="Views\Danfe\_dados_nfe.cshtml" />
+    <Content Include="Views\Danfe\_dados_adicionais.cshtml" />
+    <Content Include="Views\Danfe\_canhoto.cshtml" />
+    <Content Include="Views\Danfe\Danfe.cshtml" />
+    <Content Include="Views\Administrativo\Cupons.cshtml" />
+    <Content Include="Views\Administrativo\CriarCupom.cshtml" />
+    <Content Include="Views\Home\HistoricoDeBusca.cshtml" />
     <None Include="Web References\validarCartao\Server.wsdl" />
   </ItemGroup>
   <ItemGroup>

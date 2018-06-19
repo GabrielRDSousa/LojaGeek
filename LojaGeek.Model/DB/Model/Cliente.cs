@@ -20,10 +20,12 @@ namespace LojaGeek.Model.DB.Model
         public virtual IList<Endereco> Enderecos { get; set; }
         public virtual IList<Interesse> Interesses { get; set; }
         public virtual IList<Compra> Compras { get; set; }
+        public virtual IList<HistoricoDeBusca> Buscas { get; set; }
 
         public Cliente()
         {
             Enderecos = new List<Endereco>();
+            Buscas = new List<HistoricoDeBusca>();
             Interesses = new List<Interesse>();
             Compras = new List<Compra>();
         }
@@ -37,11 +39,19 @@ namespace LojaGeek.Model.DB.Model
 
             Property(x => x.Nome);
             Property(x => x.Sobrenome);
-            Property(x => x.Cpf);
+            Property(x => x.Cpf,  m => m.Unique(true));
             Property(x => x.Email);
             Property(x => x.Senha);
 
             Bag(x => x.Enderecos, m =>
+            {
+                m.Cascade(Cascade.All);
+                m.Lazy(CollectionLazy.NoLazy);
+                m.Inverse(true);
+                m.Key(k => k.Column("ClienteId"));
+            }, r => r.OneToMany());
+
+            Bag(x => x.Buscas, m =>
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(CollectionLazy.NoLazy);

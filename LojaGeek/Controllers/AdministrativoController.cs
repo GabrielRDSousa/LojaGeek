@@ -7,17 +7,98 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//TempData["warning"] = "Mensagem de warning!!";
+//TempData["success"] = "Mensagem de sucesso!!";
+//TempData["info"] = "Mensagem de informação!!";
+//TempData["error"] = "Mensagem de erro!!";
+
 namespace LojaGeek.Controllers
 {
     public class AdministrativoController : Controller
     {
+        public Boolean EhAdmin()
+        {
+            var admin = Session["Admin"];
+            if (admin != null)
+                return true;
+            else
+                return false;
+        }
 
         public ActionResult Estoque()
         {
+            if (EhAdmin())
+            {
+                try
+                {
+                    var produtos = DbFactory.Instance.ProdutoRepository.FindAll();
+                    return View(produtos);
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+            
+        }
 
-            var produtos = DbFactory.Instance.ProdutoRepository.FindAll();          
+        public ActionResult Cupons()
+        {
+            if (EhAdmin())
+            {
+                try
+                {
+                    var cupons = DbFactory.Instance.CupomRepository.FindAll();
+                    return View(cupons);
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
 
-            return View(produtos);
+        }
+
+        public ActionResult CriarCupom()
+        {
+            if (EhAdmin())
+            {
+                return View();
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
+        }
+
+        public ActionResult GravarCupom(Cupom cupom)
+        {
+            if (EhAdmin())
+            {
+                TempData["success"] = "Cupom criado com sucesso";
+                DbFactory.Instance.CupomRepository.SaveOrUpdate(cupom);
+                return RedirectToAction("Cupons");
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
         }
 
         public ActionResult LoginView()
@@ -29,48 +110,94 @@ namespace LojaGeek.Controllers
         {
             if (LoginUtils.LoginAdministrativo(senha))
             {
+                
+                TempData["success"] = "Bem vindo administrador";
                 return RedirectToAction("Estoque");
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                TempData["error"] = "Senha incorreta, tente novamente";
+                return RedirectToAction("LoginView");
             }
         }
 
         public ActionResult DeslogarAdmin()
         {
             LoginUtils.DeslogarAdmin();
+            TempData["success"] = "Até mais administrador";
             return RedirectToAction("Index", "Home");
             
         }
 
-
-
-        /*Manipulações com o produto*/
         public ActionResult DesativarProduto(Guid id)
         {
-            var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
-
-            if (produto != null)
+            if (EhAdmin())
             {
-                produto.Ativo = false;
-                DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
-            }
+                try
+                {
+                    var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
+                    if (produto.Ativo != false)
+                    {
+                        TempData["success"] = "Produto desativado";
+                        produto.Ativo = false;
+                        DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+                    }
+                    else
+                    {
+                        TempData["warning"] = "Produto já está inativo";
+                    }
 
-            return RedirectToAction("Estoque");
+                    return RedirectToAction("Estoque");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Estoque");
+                }
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+            
         }
 
         public ActionResult AtivarProduto(Guid id)
         {
-            var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
-
-            if (produto != null)
+            if (EhAdmin())
             {
-                produto.Ativo = true;
-                DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+                try
+                {
+                    var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
+
+                    if (produto.Ativo != true)
+                    {
+                        TempData["success"] = "Produto ativado";
+                        produto.Ativo = true;
+                        DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+                    }
+                    else
+                    {
+                        TempData["warning"] = "Produto já está ativo";
+                    }
+
+                    return RedirectToAction("Estoque");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Estoque");
+                }
+
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
             }
 
-            return RedirectToAction("Estoque");
+            
         }
 
         //public ActionResult BuscarPeloNome(String edtBusca)
@@ -88,24 +215,60 @@ namespace LojaGeek.Controllers
 
         public ActionResult AdicionarEstoque(Guid id)
         {
-            var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
-            return View(produto);
+            if (EhAdmin())
+            {
+                try
+                {
+                    var produto = DbFactory.Instance.ProdutoRepository.FindById(id);
+                    return View(produto);
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Estoque");
+                }
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
         }
 
         public ActionResult ModificarEstoque(Produto produto)
         {
-            var produtoDestualizado = DbFactory.Instance.ProdutoRepository.FindById(produto.Id);
-            var precoAtualizado = CalculoUtils.NovoPrecoAoAtualizarEstoque(produto, produtoDestualizado);
-            var quantidadeAdicionada = produto.Estoque;
+            if (EhAdmin())
+            {
+                try
+                {
+                    var produtoDestualizado = DbFactory.Instance.ProdutoRepository.FindById(produto.Id);
+                    var precoAtualizado = CalculoUtils.NovoPrecoAoAtualizarEstoque(produto, produtoDestualizado);
+                    var quantidadeAdicionada = produto.Estoque;
 
-            produto = produtoDestualizado;
+                    produto = produtoDestualizado;
 
-            produto.Preco = precoAtualizado;
-            produto.Estoque += quantidadeAdicionada;
+                    produto.Preco = precoAtualizado;
+                    produto.Estoque += quantidadeAdicionada;
 
-            DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+                    DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
 
-            return RedirectToAction("Estoque");
+                    TempData["success"] = "Produto modificado com sucesso";
+                    return RedirectToAction("Estoque");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex;
+                    return RedirectToAction("Estoque");
+                }
+                
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
         }
 
     }

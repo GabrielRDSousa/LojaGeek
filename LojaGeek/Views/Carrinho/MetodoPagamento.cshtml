@@ -42,7 +42,15 @@
                                             <option selected disabled>Quantas parcelas</option>
                                             @for(var i = 1; i <= 10; i++)
                                             {
-                                                <option value="@i">@i x R$@(Math.Round(carrinho.ValorTotal/i))</option>
+                                                if(carrinho.Cupom != null)
+                                                {
+                                                    <option value="@i">@i x R$@(Math.Round((carrinho.ValorTotal-(carrinho.ValorTotal*(carrinho.Cupom.Desconto*0.01)) + carrinho.ValorFrete)/i))</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@i">@i x R$@(Math.Round((carrinho.ValorTotal + carrinho.ValorFrete)/i))</option>
+                                                }
+
                                             }
                                         </select>
                                         <br />

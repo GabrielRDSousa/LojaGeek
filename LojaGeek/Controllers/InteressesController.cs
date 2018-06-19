@@ -25,7 +25,7 @@ namespace LojaGeek.Controllers
             }
             else
             {
-                return View("CadastrarCliente", interesse);
+                return View("EntrarCliente", interesse);
             }
 
         }

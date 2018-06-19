@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LojaGeek.Model.DB.Model.Compra>
+
+@{
+    ViewBag.Title = "Compras";
+}
+
+<h2>Compras</h2>
+
+<table class="table table-responsive table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDaCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetodoDePagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtdParcelas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nfe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetodoDePagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtdParcelas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nfe)
+        </td>
+        <td>
+            @if (item.Nfe == null)
+            {
+                @Html.ActionLink("Gerar NF-e", "GerarNfe", new { id = item.Id }, new { @class = "btn btn-default" })
+            }
+            else {
+                @Html.ActionLink("Exibir NF-e", "ExibirNfe", new { id = item.Id }, new { @class = "btn btn-default" })
+            }
+        </td>
+    </tr>
+}
+
+</table>

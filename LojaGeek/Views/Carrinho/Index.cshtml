@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.Cep = Session["Cep"];
 }
 
 <h2><i class="glyphicon glyphicon-shopping-cart"></i> Carrinho</h2>
@@ -27,7 +28,7 @@
                                 <div class="media">
                                     <a class="thumbnail pull-left" href="#">
                                         @if (item.Produto.Foto != null)
-                                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src=" " data-holder-rendered="true">}
+                                        {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src="@item.Produto.Foto" data-holder-rendered="true">}
                                         else
                                         {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]" style="width: 300px; height: 300px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
                                     </a>
@@ -83,34 +84,35 @@
                                     <input type="text" name="cupom" id="cupom" value="" class="form-control" />
                                     <input type="submit" value="Validar" class="btn btn-default" />
                                 }
-
-                                if (ViewBag.erro != null)
-                                {
-                                    <br />
-                                    <div class="alert alert-danger" style="width:25%;">
-                                        <p>@ViewBag.erro</p>
-                                    </div>
-                                }
                             }
                         </td>
                         <td>
                             @using (Html.BeginForm("CalcularFrete", "Carrinho", FormMethod.Post))
                             {
-                                <label for="frete">CalcularFrete</label>
-                                <input type="number" name="frete" id="frete" value="" class="form-control" placeholder="Apenas os numeros" maxlength="8" />
-                                <input type="submit" value="Calcular" class="btn btn-default" />
-                                if (ViewBag.sucesso != null)
+                                <label for="frete">CEP para frete</label>
+                                if(Model.ValorFrete == 0)
                                 {
-                                    <br />
-                                    <div class="alert alert-success">
-                                        <p>@ViewBag.sucesso</p>
-                                    </div>
+                                    <input type="number" name="frete" id="frete" value="" class="form-control" placeholder="Apenas os numeros" maxlength="8" />
+                                    <input type="submit" value="Calcular" class="btn btn-default" />
                                 }
+                                else
+                                {
+                                    <input type="number" name="frete" id="frete" value="@ViewBag.Cep" disabled class="form-control" />
+                                }
+
+
                             }
                         </td>
                         <td>   </td>
-                        <td><h5>Subtotal<br>Estimativa do envio</h5><h3>Total</h3></td>
-                        <td class="text-right"><h5><strong>R$ @Model.ValorTotal<br>R$ @Model.ValorFrete</strong></h5><h3>R$ @(Model.ValorTotal + Model.ValorFrete)</h3></td>
+                        <td><h5>Subtotal<br>Estimativa do envio<br/>Desconto</h5><h3>Total</h3></td>
+                        @if (Model.Cupom != null)
+                        {
+                            <td class="text-right"><h5><strong>R$ @Model.ValorTotal<br>R$ @Model.ValorFrete<br/>@Model.Cupom.Desconto %</strong></h5><h3>R$ @(Model.ValorTotal + Model.ValorFrete - ((Model.Cupom.Desconto * 0.01)*Model.ValorTotal))</h3></td>
+                        }
+                        else {
+                            <td class="text-right"><h5><strong>R$ @Model.ValorTotal<br>R$ @Model.ValorFrete<br/>0</strong></h5><h3>R$ @(Model.ValorTotal + Model.ValorFrete)</h3></td>
+                        }
+
                     </tr>
                     <tr>
                         <td>   </td>

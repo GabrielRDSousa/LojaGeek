@@ -1,32 +1,167 @@
-﻿@{
+﻿@model LojaGeek.Model.DB.Model.Cliente
+
+@{
     ViewBag.Title = "Entrar Cliente";
 }
-@using (Html.BeginForm("Logar", "Cliente", FormMethod.Post))
-{
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
+
+<div class="">
+    <h2 style="text-align:center">Entrar cliente</h2>
+    <div class="row space-between-flex">
+        <div class="col-lg-9">
+            <div class="row space-between-flex">
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <h4 style="text-align:center;"><strong>Cadastre-se</strong></h4>
+                        <div class="center">
+                            <div class="card-body">
+                                @using (Html.BeginForm("GravarCliente", "Cliente", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.Id)
+
+                                        <div class="center">
+                                            <div class="container">
+                                                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group center">
+                                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Nome" } })
+                                        </div>
+                                        
+                                        <div class="center">
+                                            <div class="container">
+                                                @Html.ValidationMessageFor(model => model.Sobrenome, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group center">
+                                            @Html.EditorFor(model => model.Sobrenome, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Sobrenome" } })
+                                        </div>
+                                        
+                                        <div class="center">
+                                            <div class="container">
+                                                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group center">
+                                            @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", type = "number", required = "required", placeholder = "CPF" } })
+                                        </div>
+                                        
+                                        <div class="center">
+                                            <div class="container">
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group center">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email", required = "required", placeholder = "E-mail" } })
+                                        </div>
+                                        
+                                        <div class="center">
+                                            <div class="container">
+                                                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group center">
+                                            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", type = "password", required = "required", placeholder="Senha" } })
+                                        </div>
+                                        
+
+                                        <fieldset>
+                                            <legend>Interesses:</legend>
+                                            <div class="form-group form-inline">
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="acao" value="acao" class="form-check-input" />
+                                                    <label class="form-check-label" for="acao">Ação</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="rpg" value="rpg" class="form-check-input" />
+                                                    <label class="form-check-label" for="rpg">RPG</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="esporte" value="esporte" class="form-check-input" />
+                                                    <label class="form-check-label" for="esporte">Esporte</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="aventura" value="aventura" class="form-check-input" />
+                                                    <label class="form-check-label" for="aventura">Aventura</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="estrategia" value="estrategia" class="form-check-input" />
+                                                    <label class="form-check-label" for="estrategia">Estratégia</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="simulador" value="simulador" class="form-check-input" />
+                                                    <label class="form-check-label" for="simulador">Simulador</label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Plataformas:</legend>
+                                            <div class="form-group form-inline">
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="ps4" value="ps4" class="form-check-input" />
+                                                    <label class="form-check-label" for="ps4">Playstation 4</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="ps3" value="ps3" class="form-check-input" />
+                                                    <label class="form-check-label" for="ps3">Playstation 3</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="xOne" value="xOne" class="form-check-input" />
+                                                    <label class="form-check-label" for="xOne">Xbox One</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="x360" value="x360" class="form-check-input" />
+                                                    <label class="form-check-label" for="x360">Xbox 360</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="nSwitch" value="nSwitch" class="form-check-input" />
+                                                    <label class="form-check-label" for="nSwitch">Switch</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="checkbox" name="n3ds" value="n3ds" class="form-check-input" />
+                                                    <label class="form-check-label" for="n3ds">Nintendo 3DS</label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                        <hr />
+                                        <div class="form-group center">
+                                            <input type="submit" class="btn btn-md btn-primary btn-block" value="Enviar">
+                                        </div>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer space-between-flex" style="width:90%">
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+
+                <div class="col-lg-3 col-md-6 mb-4 cartao">
+                    <div class="card h-100">
+                        <h4 style="text-align:center"><strong>Login</strong></h4>
+                        <div class="card-body">
+                            @using (Html.BeginForm("Logar", "Cliente", FormMethod.Post))
+                            {
+                                <div class="form-group center">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group center">
+                                    <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+                                </div>
+                                <div class="form-group center">
+                                    <input id="retorno" name="retorno" type="hidden" value="@ViewBag.retorno">
+                                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar">
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
-                    </div>
-                    <div>
-                        <p class="alert-danger">@ViewBag.erro</p>
-                    </div>
-                    <input type="hidden" name="retorno" value="@ViewBag.retorno" />
-                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Enviar">
                 </div>
             </div>
         </div>
     </div>
 </div>
-}
+
 
 

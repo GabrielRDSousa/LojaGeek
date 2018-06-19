@@ -17,6 +17,7 @@ namespace LojaGeek.Model.DB.Model
         public virtual String Descricao { get; set; }
         public virtual String Plataforma { get; set; }
         public virtual int Estoque { get; set; }
+        public virtual double Peso { get; set; }
         public virtual double Preco { get; set; }
         public virtual DateTime DataModificacao { get; set; }
         public virtual String Foto { get; set; }
@@ -42,6 +43,7 @@ namespace LojaGeek.Model.DB.Model
             Property(x => x.Descricao);
             Property(x => x.Plataforma);
             Property(x => x.Estoque);
+            Property(x => x.Peso);
             Property(x => x.Preco);
             Property(x => x.DataModificacao);
             Property(x => x.Ativo);

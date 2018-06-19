@@ -19,7 +19,7 @@ namespace LojaGeek.Model.DB.Repository
             try
             {
                 return this.Session.Query<Compra>()
-                           .Where(w => w.Cliente.Equals(cliente)).ToList();
+                           .Where(w => w.Cliente.Id.Equals(cliente.Id)).ToList();
             }
             catch (Exception ex)
             {

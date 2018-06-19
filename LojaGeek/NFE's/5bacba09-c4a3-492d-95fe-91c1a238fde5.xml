@@ -1,0 +1,229 @@
+<nfeProc versao="2.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infNFe Id="NFe23141206626253012400550090000882291882290004" versao="2.00">
+      <ide>
+        <cUF>23</cUF>
+        <cNF>88229000</cNF>
+        <natOp>VENDA MERC ADQREC TERC</natOp>
+        <indPag>2</indPag>
+        <mod>55</mod>
+        <serie>9</serie>
+        <nNF>88229</nNF>
+        <dEmi id="data_emissao">2018-06-18 17:18:44</dEmi>
+        <dSaiEnt id="data_saida">
+        </dSaiEnt>
+        <tpNF>1</tpNF>
+        <cMunFG>2304400</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>4</cDV>
+        <tpAmb>1</tpAmb>
+        <finNFe>1</finNFe>
+        <procEmi>0</procEmi>
+        <verProc>1</verProc>
+      </ide>
+      <emit>
+        <CNPJ>00000000000000</CNPJ>
+        <xNome>Loja Geek SA</xNome>
+        <xFant>CD01JUIZDEFORAMG</xFant>
+        <enderEmit>
+          <xLgr>Rua Delfim Moreira</xLgr>
+          <nro>200</nro>
+          <xBairro>Centro</xBairro>
+          <cMun>2304400</cMun>
+          <xMun>JUIZ DE FORA</xMun>
+          <UF>MG</UF>
+          <CEP>36010570</CEP>
+          <fone>3232133658</fone>
+        </enderEmit>
+        <IE>062721593</IE>
+        <IM>6056261</IM>
+        <CNAE>4644301</CNAE>
+        <CRT>3</CRT>
+      </emit>
+      <dest id="dest">
+        <CNPJ id="cpfCliente">98765432101</CNPJ>
+        <xNome id="nomeCliente">Maria Sousa Silva</xNome>
+        <enderDest>
+          <xLgr id="ruaEnderecoCliente">Rua Delfim</xLgr>
+          <nro id="noEnderecoCliente">325</nro>
+          <xBairro id="bairroEnderecoCliente">Granbery</xBairro>
+          <cMun>
+          </cMun>
+          <xMun id="cidadeEnderecoCliente">JF</xMun>
+          <UF id="ufEnderecoCliente">MG</UF>
+          <CEP id="cepEnderecoCliente">36010570</CEP>
+          <cPais>
+          </cPais>
+          <xPais>Brasil</xPais>
+          <fone>
+          </fone>
+        </enderDest>
+        <IE>
+        </IE>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>ddc1c301-71f2-4cf6-869d-f8584a38307d</cProd>
+          <cEAN> </cEAN>
+          <xProd>God of war 4</xProd>
+          <NCM />
+          <CFOP />
+          <uCom>UN</uCom>
+          <qCom>1</qCom>
+          <vUnCom>223,7</vUnCom>
+          <vProd />
+          <cEANTrib />
+          <uTrib />
+          <qTrib />
+          <vUnTrib />
+          <indTot />
+          <med>
+            <nLote />
+            <qLote />
+            <dFab />
+            <dVal />
+            <vPMC />
+          </med>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig />
+              <modBC />
+              <vBC>223,7</vBC>
+              <CST>0</CST>
+              <vICMS>26,844</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISNT>
+              <CST> </CST>
+            </PISNT>
+          </PIS>
+          <COFINS>
+            <COFINSNT>
+              <CST> </CST>
+            </COFINSNT>
+          </COFINS>
+        </imposto>
+        <infAdProd />
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC id="vBC">223,7</vBC>
+          <vICMS id="vICMS">26,844</vICMS>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vProd id="vProd">223,7</vProd>
+          <vFrete>10.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vPIS>0.00</vPIS>
+          <vCOFINS>0.00</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF id="vNF">233,7</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>0</modFrete>
+        <transporta>
+          <xNome>Correios</xNome>
+          <IE>
+          </IE>
+          <xEnder>
+          </xEnder>
+          <xMun>
+          </xMun>
+          <UF>
+          </UF>
+        </transporta>
+        <vol>
+          <qVol id="quantidade">1</qVol>
+          <pesoL id="pesoLiquido">0g</pesoL>
+          <pesoB id="pesoBruto">0g</pesoB>
+        </vol>
+      </transp>
+      <cobr>
+        <fat>
+          <nFat>88229</nFat>
+          <vOrig>10.00</vOrig>
+          <vLiq>10.00</vLiq>
+        </fat>
+        <dup>
+          <nDup>
+          </nDup>
+          <dVenc>
+          </dVenc>
+          <vDup>
+          </vDup>
+        </dup>
+      </cobr>
+      <infAdic>
+        <infAdFisco>-</infAdFisco>
+        <infCpl>-</infCpl>
+        <obsCont xCampo="1">
+          <xTexto>VIA TRANSPORTE: TERRESTRE</xTexto>
+        </obsCont>
+        <obsCont xCampo="2">
+          <xTexto>
+          </xTexto>
+        </obsCont>
+        <obsCont xCampo="3">
+          <xTexto>
+          </xTexto>
+        </obsCont>
+        <obsCont xCampo="CNPJ_loja">
+          <xTexto>00000000/0000-00</xTexto>
+        </obsCont>
+        <obsCont xCampo="CodigoPedido">
+          <xTexto id="CodigoPedido">5bacba09-c4a3-492d-95fe-91c1a238fde5</xTexto>
+        </obsCont>
+        <obsCont xCampo="numeropedido">
+          <xTexto id="CodigoPedido2">5bacba09-c4a3-492d-95fe-91c1a238fde5</xTexto>
+        </obsCont>
+        <obsCont xCampo="sequencialpedido">
+          <xTexto>
+          </xTexto>
+        </obsCont>
+        <obsCont xCampo="numeroloja">
+          <xTexto>393</xTexto>
+        </obsCont>
+      </infAdic>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe23141206626253012400550090000882291882290004">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>3ati5pJEAB6D3kv75DJ1dHWHIzI=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>JOMSD3V+6YEt+2eriacIKsdo7ShpGda51s4mOrP8RQjOlEK2GmvAwwE7QdlZ0HglszokSvj+Jg8DcoS637mw3CqDaozKu0QoRBcKzKcaNyX8XKSNRw1QNdVDjsq5MiewH0Sj6tEsmfhLFuEg3r+0qku96urO2Mef47v6BCDqI3MH29AB9k1YY7EFc4Ljqbvp41qNoU8QidJ7H4Fg55hbvKT+6zbjQGuZn1ZUwdY7Mng40kneqd/FKcZUrW3GeIiu2tA8fXT3u2MOD5vXkczUwkeVRG892KBKC8HZUMN5rfJhfZxTPD35DNu4XawzK0fY2P5iBktbCULq861suefjyQ==</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>MIIIOTCCBiGgAwIBAgIQToz1jbKyv02tNRNOKYCMwTANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDEtMCsGA1UECxMkQ2VydGlzaWduIENlcnRpZmljYWRvcmEgRGlnaXRhbCBTLkEuMSEwHwYDVQQDExhBQyBDZXJ0aXNpZ24gTXVsdGlwbGEgRzUwHhcNMTIwMjAxMDAwMDAwWhcNMTUwMTMwMjM1OTU5WjCBxjELMAkGA1UEBhMCQlIxEzARBgNVBAoUCklDUC1CcmFzaWwxHzAdBgNVBAsUFkF1dGVudGljYWRvIHBvciBBUiBBQkwxGzAZBgNVBAsUEkFzc2luYXR1cmEgVGlwbyBBMzEVMBMGA1UECxQMSUQgLSAyNzA2NTc4MSgwJgYDVQQDEx9FTVBSRUVORElNRU5UT1MgUEFHVUUgTUVOT1MgUyBBMSMwIQYJKoZIhvcNAQkBFhRrYW1pbGFAcG1lbm9zLmNvbS5icjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALzgacq9OPStxO63aqbD1K8SN7rdiq62OAWFwOfZLSXXh4wznFmWX8Q4bzDE+mHrub4aiFLfnaCpCx3ewSsQUfZblCogoe14x+IfmIosgNMB4HYMKpkvdmaEo9wOD7N3byJ+Zq2AYcov//YZX4b13wt/tYIt3EfUtifPRY9Qh861nLtX96mySVukbcDnJLzuSrWkMWRh8BtXvgIJcqweL8ZsTaHbVWxsELecUefFjuJcMLxbm7/aj0U+NZiHjksS1jawW1R8QNXJItKpNNSuTP4Cb4ew9d/ka0FoPZmOZd4Ty7mFZY4fszz6bp79gcK+WHwcqLwvC1qheE9Kn2W7yPMCAwEAAaOCA3IwggNuMIG4BgNVHREEgbAwga2gOAYFYEwBAwSgLwQtMjcwNTE5NDcwMjQ5MjI4ODMxNTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwoCcGBWBMAQMCoB4EHEZyYW5jaXNjbyBEZXVzbWFyIGRlIFF1ZWlyb3OgGQYFYEwBAwOgEAQOMDY2MjYyNTMwMDAxNTGgFwYFYEwBAwegDgQMMDAwMDAwMDAwMDAwgRRrYW1pbGFAcG1lbm9zLmNvbS5icjAJBgNVHRMEAjAAMB8GA1UdIwQYMBaAFJ1Qz73/JMqvsTPrF+JCeo5pKo5TMA4GA1UdDwEB/wQEAwIF4DCBiQYDVR0gBIGBMH8wfQYGYEwBAgMFMHMwcQYIKwYBBQUHAgEWZWh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vZHBjL0FDX0NlcnRpc2lnbl9NdWx0aXBsYS9EUENfQUNfQ2VydGlTaWduTXVsdGlwbGEucGRmMIIBJQYDVR0fBIIBHDCCARgwXKBaoFiGVmh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDQ2VydGlzaWduTXVsdGlwbGFHNS9MYXRlc3RDUkwuY3JsMFugWaBXhlVodHRwOi8vaWNwLWJyYXNpbC5vdXRyYWxjci5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDQ2VydGlzaWduTXVsdGlwbGFHNS9MYXRlc3RDUkwuY3JsMFugWaBXhlVodHRwOi8vcmVwb3NpdG9yaW8uaWNwYnJhc2lsLmdvdi5ici9sY3IvQ2VydGlzaWduL0FDQ2VydGlzaWduTXVsdGlwbGFHNS9MYXRlc3RDUkwuY3JsMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDCBoAYIKwYBBQUHAQEEgZMwgZAwZAYIKwYBBQUHMAKGWGh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vY2VydGlmaWNhZG9zL0FDX0NlcnRpc2lnbl9NdWx0aXBsYV9HNS5wN2MwKAYIKwYBBQUHMAGGHGh0dHA6Ly9vY3NwLmNlcnRpc2lnbi5jb20uYnIwDQYJKoZIhvcNAQELBQADggIBAFN2fRHKD8bHY8gAfg2spDszANgy66hRpwMsQO7GF9slRrrvcHWB1Or3VcEbF/kvFO6tyntVSjFEdTaZbAnRXey277836dKNmlQZmq0hVTwodUn4/N3gl3wsgcvC1UlNdKTcHUDDsgXB1jSEut2perAs8Qip4uL3hZfP2dIiEFiKW7BYUW7TN56d60b03ZMqO5QbF9p/rtYEl2UjZOP+e4AWMfy5yNkLtcWpB4m86YMIEED93yLLSzpJuzZ7wgt9vw/8FL9n71indWN6+0CDXYRepX8jNGTCtvOYizHoHG8WZf7iDjXz0fUNkCeuvolKlLisQguIBpqmkwxg5A49sXvxFnn6xexfvkKT2sbSy4Iuf+VB5L/rDywU/keKYOuSgfqkN46I7r7uoTgUxBk3EHEg0/oeVFBF0mK/XokCxjQu+hjaE8H+QwcKL3RJM8jczvFZ5hhEbXYRbh3+xgPMVoD3HH+y1J6F9+8pLd82RhN+by8coqd2NfL7/Mf/iaH1q8Q2uI1tE+1AqC+h55jzMGXzwPxWlgFQVpYIzDMm091piFB0pk7nTn2ShgEQiEHquZeNaa1NL4Cdt1DRv8TCYu9k4xbH8sFFDFlWMG0wOC9Xl99yBwFIE8X4fHz4RDVoHUjrsZIyCJbJgsK0932ani5n80CmI6mTt7qaNvSh7HZw</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="2.00">
+    <infProt Id="ID123140069357106">
+      <tpAmb>1</tpAmb>
+      <verAplic>NFeSinc_V2.6.10</verAplic>
+      <chNFe>23141206626253012400550090000882291882290004</chNFe>
+      <dhRecbto id="dhRecbto">2018-06-18T17:18:44</dhRecbto>
+      <nProt>123140069357106</nProt>
+      <digVal>3ati5pJEAB6D3kv75DJ1dHWHIzI=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>

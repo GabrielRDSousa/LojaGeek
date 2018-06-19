@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LojaGeek.Model.DB.Model.Compra>
+
+@{
+    ViewBag.Title = "Minhas compras";
+}
+
+<h2>Minhas compras</h2>
+
+<table class="table table-responsive table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayName("Data da compra")
+        </th>
+        <th>
+            @Html.DisplayName("Método de pagamento")
+        </th>
+        <th>
+            @Html.DisplayName("Valor")
+        </th>
+        <th>
+            @Html.DisplayName("Frete")
+        </th>
+        <th>
+            @Html.DisplayName("Parcelas")
+        </th>
+        <th>Status</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetodoDePagamento)
+        </td>
+        <td>
+            @if(item.Carrinho.Cupom != null)
+            {
+               <span>R$</span>@((item.Carrinho.ValorTotal - (item.Carrinho.ValorTotal*(item.Carrinho.Cupom.Desconto*0.01))).ToString())
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.Carrinho.ValorTotal)
+            }
+        </td>
+        <td>
+            <span>R$</span>@Html.DisplayFor(modelItem => item.Carrinho.ValorFrete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtdParcelas)
+        </td>
+        <td>
+            @if(item.Nfe != null)
+            {
+                @Html.ActionLink("Exibir NF-e", "ExibirNfe", "Compra", new { id = item.Id }, new { @class = "btn btn-default"})
+            }
+            else
+            {
+                @Html.ActionLink("Compra sendo processada", "ComprasDoliente", "Compra", new { @class = "btn btn-default"})
+            }
+        </td>
+    </tr>
+}
+
+</table>

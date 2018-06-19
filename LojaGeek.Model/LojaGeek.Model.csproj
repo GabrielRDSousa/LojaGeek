@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\DbFactory.cs" />
+    <Compile Include="DB\Model\HistoricoDeBusca.cs" />
     <Compile Include="DB\Model\Carrinho.cs" />
     <Compile Include="DB\Model\Cliente.cs" />
     <Compile Include="DB\Model\Comentario.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="DB\Repository\CompraRespository.cs" />
     <Compile Include="DB\Repository\CupomRepository.cs" />
     <Compile Include="DB\Repository\EnderecoRepository.cs" />
+    <Compile Include="DB\Repository\HistoricoDeBuscaRepository.cs" />
     <Compile Include="DB\Repository\InteresseRepository.cs" />
     <Compile Include="DB\Repository\ItemCarrinhoRepository.cs" />
     <Compile Include="DB\Repository\ProdutoRepository.cs" />

@@ -7,6 +7,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//TempData["warning"] = "Mensagem de warning!!";
+//TempData["success"] = "Mensagem de sucesso!!";
+//TempData["info"] = "Mensagem de informação!!";
+//TempData["error"] = "Mensagem de erro!!";
+
 namespace LojaGeek.Controllers
 {
 
@@ -29,19 +34,8 @@ namespace LojaGeek.Controllers
             {
                 total += (item.Produto.Preco * item.Quantidade);
             }
-            if (carrinho.ValorFrete != null)
-            {
-                total += carrinho.ValorFrete;
-            }
-            if (carrinho.Cupom != null)
-            {
-                total -= ((total- carrinho.ValorFrete) * carrinho.Cupom.Desconto);
-            }
-            carrinho.ValorTotal = total;
-            carrinho = DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
 
-            ViewBag.erro = (String)Session["erro"];
-            ViewBag.sucesso = (String)Session["sucesso"];
+            carrinho.ValorTotal = total;
 
             return View(carrinho);
         }
@@ -98,22 +92,29 @@ namespace LojaGeek.Controllers
             if (c != null)
             {
                 Carrinho carrinho = (Carrinho)Session["carrinho"];
-                if (carrinho != null)
+                if (carrinho != null || carrinho.Items.Count > 0)
                 {
-                    carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
-                    carrinho.Cupom = c;
-                    DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
-                    carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
-                    Session["carrinho"] = carrinho;
+                    if (!c.FoiUsado)
+                    {
+                        carrinho.Cupom = c;
+                        DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
+                        Session["carrinho"] = carrinho;
+                        TempData["success"] = "Cupom aplicado";
+                    }
+                    else
+                    {
+                        TempData["error"] = "Cupom já utilizado";
+                    }
+                    
                 }
                 else
                 {
-                    Session["erro"] = "Carrinho vazio, coloque algum produto no carrinho antes";
+                    TempData["error"] = "Carrinho vazio, coloque algum produto no carrinho antes";
                 }
             }
             else
             {
-                Session["erro"] = "Cupom não existe";
+                TempData["error"] = "Cupom não existe";
             }
             return RedirectToAction("Index");
         }
@@ -121,12 +122,12 @@ namespace LojaGeek.Controllers
         public ActionResult CalcularFrete(String frete)
         {
             Carrinho carrinho = (Carrinho)Session["carrinho"];
+            Session["Cep"] = frete;
             if (carrinho != null)
             {
-                carrinho = DbFactory.Instance.CarrinhoRepository.FindById(carrinho.Id);
-                carrinho.ValorFrete = 10;
+                carrinho.ValorFrete = 10.00;
                 carrinho = DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
-                Session["sucesso"] = "O frete é de 10 reais";
+                TempData["success"] = "Frete será 10 reais";
             }
             return RedirectToAction("Index");
         }
@@ -177,13 +178,13 @@ namespace LojaGeek.Controllers
             }
             catch(Exception ex)
             {
-                Session["resposta_cartao"] = ex.Message;
+                TempData["error"] = ex.Message;
                 return RedirectToAction("MetodoPagamento", new { endereco_escolhido = id_endereco});
             }
 
-            Session["resposta_cartao"] = "Cartão cadastrado com sucesso";
+            TempData["success"] = "Cartão autorizado";
             Session["cartao"] = cartao;
-            return RedirectToAction("MetodoPagamento", new { endereco_escolhido = id_endereco });
+            return RedirectToAction("Resumo", new { metodo = "cartao" });
         }
 
         public ActionResult Resumo(String metodo)
@@ -192,8 +193,26 @@ namespace LojaGeek.Controllers
             ViewBag.metodo = metodo;
             if (metodo.Equals("boleto"))
             {
-                var aux = carrinho.ValorTotal - (carrinho.ValorTotal * 0.1);
-                carrinho.ValorTotal = aux;
+                if(carrinho.Cupom == null)
+                {
+                    Cupom cupom = new Cupom();
+                    cupom.Desconto = 10;
+                    cupom.Nome = "Boleto";
+                    try
+                    {
+                        DbFactory.Instance.CupomRepository.SaveOrUpdate(cupom);
+                        carrinho.Cupom = cupom;
+                    }
+                    catch(Exception ex)
+                    {
+                        TempData["error"] = ex.Message;
+                    }
+                }
+                if (carrinho.ValorFrete == 0)
+                {
+                    carrinho.ValorFrete = 10.00;
+                    DbFactory.Instance.CarrinhoRepository.SaveOrUpdate(carrinho);
+                }
                 return View();
             }
             else
@@ -231,6 +250,12 @@ namespace LojaGeek.Controllers
                     produto.Ativo = false;
                 }
                 DbFactory.Instance.ProdutoRepository.SaveOrUpdate(produto);
+            }
+
+            if (compra.Carrinho.Cupom != null)
+            {
+                compra.Carrinho.Cupom.FoiUsado = true;
+                DbFactory.Instance.CupomRepository.SaveOrUpdate(compra.Carrinho.Cupom);
             }
 
             Session["carrinho"] = null;

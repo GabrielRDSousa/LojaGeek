@@ -43,8 +43,12 @@
                                         Cupom @carrinho.Cupom.Nome <br />
                                         Desconto de @carrinho.Cupom.Desconto %
                                     </li>
+                                    <li class="list-group-item">Total: R$ @(carrinho.ValorTotal - (carrinho.ValorTotal*(carrinho.Cupom.Desconto * 0.01)) + carrinho.ValorFrete)</li>
                                 }
-                                <li class="list-group-item">Total: R$ @carrinho.ValorTotal</li>
+                                else
+                                {
+                                    <li class="list-group-item">Total: R$ @(carrinho.ValorTotal + carrinho.ValorFrete)</li>
+                                }
                             </ul>
                         </div>
                         <div class="card-footer space-between-flex" style="width:90%">
@@ -63,7 +67,15 @@
                                 <ul class="list-group">
                                     <li class="list-group-item">Número do cartão: @cartao.NumeroCartao</li>
                                     <li class="list-group-item">Nome no cartão: @cartao.NomeCliente</li>
-                                    <li class="list-group-item">Quantidade de parcelas: @cartao.Parcelas x R$@(Math.Round(carrinho.ValorTotal / cartao.Parcelas))</li>
+                                    @if (carrinho.Cupom != null)
+                                    {
+                                    <li class="list-group-item">Quantidade de parcelas: @cartao.Parcelas x R$ @(Math.Round(carrinho.ValorTotal - (carrinho.ValorTotal * (carrinho.Cupom.Desconto * 0.01)) + carrinho.ValorFrete) / cartao.Parcelas)</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item">Quantidade de parcelas: @cartao.Parcelas x R$@(Math.Round(carrinho.ValorTotal / cartao.Parcelas))</li>
+                                    }
+                                    
                                 </ul>
                             </div>
                         </div>

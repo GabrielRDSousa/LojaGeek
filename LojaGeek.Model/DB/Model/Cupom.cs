@@ -18,6 +18,7 @@ namespace LojaGeek.Model.DB.Model
 
         public Cupom()
         {
+            FoiUsado = false;
             Carrinhos = new List<Carrinho>();
         }
     }

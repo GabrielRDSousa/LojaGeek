@@ -33,13 +33,13 @@ textarea {
 .space-between-flex{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:baseline;
 }
 
 .space-around-flex {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
 }
 
 .cor-menu {
@@ -136,3 +136,10 @@ footer {
     padding: 1%;
 
 }
+
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+

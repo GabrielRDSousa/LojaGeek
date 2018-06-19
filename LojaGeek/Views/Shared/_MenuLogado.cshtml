@@ -3,7 +3,18 @@
 <div>
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home" })</li>
-        <li><input type="text" name="busca" value="" placeholder="Qual produto que você deseja ?" id="barra-de-pesquisa" class="form-control form-control-lg" style="width:120%; text-align:center;" /></li>
+        <li>
+            <div class="form-group">
+                <div class="form-inline">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class="pesquisa"}))
+                    {
+                        <input type="text" name="busca" value="" placeholder="Pesquisa" id="barra-de-pesquisa" class="form-control form-control-lg" style="width:120%; text-align:center;" />
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    }
+                </div>
+            </div>
+        </li>
+        
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li id="correcao-posicao-dropdown">
@@ -15,7 +26,8 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div style="display:inline-grid;">
                         <div>@Html.ActionLink("Ver perfil", "PerfilCliente", "Cliente")</div>
-                        <div>@Html.ActionLink("Compras feitas", "ComprasCliente", "Cliente")</div>
+                        <div>@Html.ActionLink("Compras feitas", "ComprasDoliente", "Compra")</div>
+                        <div>@Html.ActionLink("Pesquisas feitas", "HistoricoDeBusca", "Home")</div>
                         <div>@Html.ActionLink("Sair", "DeslogarCliente", "Cliente")</div>
                     </div>
                 </div>

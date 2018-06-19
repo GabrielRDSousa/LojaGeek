@@ -18,7 +18,7 @@
             <div class="card mt-4">
                     @if (Model.Foto != null)
                     {
-                        <img src="@Model.Foto" alt="imagem do produto" />
+                        <img src="@Model.Foto" alt="imagem do produto" style="width: 600px; height: 600px;" />
                     }
                     else
                     {
@@ -45,6 +45,14 @@
                 <div class="card-body">
                     @foreach (var item in Model.Comentarios)
                     {
+                        for (var i=0; i<item.Nota; i++)
+                        {
+                            <i class="glyphicon glyphicon-star"></i>
+                        }
+                        for (var i = 0; i < 5-item.Nota; i++)
+                        {
+                            <i class="glyphicon glyphicon-star-empty"></i>
+                        }
                         <p>@item.Texto</p>
                         <small class="text-muted">Enviado por @item.Nome</small>
                         <hr>
@@ -55,7 +63,16 @@
                         <div class="form-group">
                             <label for="comentario">Adicione seu comentário aqui:</label>
                             <textarea class="form-control" rows="5" cols="20" name="comentario" required></textarea>
-
+                            <div>
+                                <select name="nota" class="form-control">
+                                    <option selected disabled>Dê sua nota para o jogo</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
                             <input type="text" name="nome" class="form-control" placeholder="Qual o seu nome ?" required />
                         </div>
 

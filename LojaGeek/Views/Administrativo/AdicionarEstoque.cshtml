@@ -4,7 +4,7 @@
     ViewBag.Title = "Adicionar Estoque";
 }
 
-<h2>AdicionarEstoque</h2>
+<h2>Adicionar ao estoque</h2>
 
 
 @using (Html.BeginForm("ModificarEstoque", "Administrativo", FormMethod.Post))
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Produto</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

@@ -13,6 +13,7 @@ namespace LojaGeek.Model.DB.Model
         public virtual Guid Id { get; set; }
         public virtual String Nome { get; set; }
         public virtual String Texto { get; set; }
+        public virtual int Nota { get; set; }
         public virtual Produto Produto { get; set; }
     }
 
@@ -24,6 +25,7 @@ namespace LojaGeek.Model.DB.Model
 
             Property(x => x.Nome);
             Property(x => x.Texto);
+            Property(x => x.Nota);
 
             ManyToOne(x => x.Produto, m => {
                 m.Column("ProdutoId");
