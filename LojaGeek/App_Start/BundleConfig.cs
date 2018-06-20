@@ -28,6 +28,17 @@ namespace LojaGeek
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/sb-admin-2.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+                                        //~/Scripts/Inputmask/dependencyLibs/inputmask.dependencyLib.js",  //if not using jquery
+                                        "~/Scripts/inputmask/inputmask.js",
+                                        "~/Scripts/inputmask/jquery.inputmask.js",
+                                        "~/Scripts/inputmask/inputmask.extensions.js",
+                                        "~/Scripts/inputmask/inputmask.date.extensions.js",
+                                        //and other extensions you want to include
+                                        "~/Scripts/inputmask/inputmask.numeric.extensions.js",
+                                        //and the custom masks
+                                        "~/Scripts/inputmask/mascaras.js"));
         }
     }
 }

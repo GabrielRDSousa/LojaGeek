@@ -40,12 +40,12 @@
                                 @Html.DisplayNameFor(model => model.Preco)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Estoque)
+                                <span>Quantidade em  </span>@Html.DisplayNameFor(model => model.Estoque)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Ativo)
                             </th>
-                            <th>#</th>
+                            <th>Ações</th>
                         </tr>
                         <tbody>
                             @foreach (var item in Model)
@@ -72,7 +72,7 @@
                                 <td>
                                     @Html.ActionLink("Desativar produto", "DesativarProduto", new { id = item.Id }) |
                                     @Html.ActionLink("Ativar produto", "AtivarProduto", new { id = item.Id }) |
-                                    @Html.ActionLink("Adicionar estoque", "AdicionarEstoque", new { id = item.Id })
+                                    @Html.ActionLink("Adicionar ao estoque", "AdicionarEstoque", new { id = item.Id })
                                 </td>
                             </tr>
                             }
