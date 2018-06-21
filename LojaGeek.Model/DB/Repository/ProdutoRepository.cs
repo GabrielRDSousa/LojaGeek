@@ -30,7 +30,7 @@ namespace LojaGeek.Model.DB.Repository
             try
             {
                 return this.Session.Query<Produto>()
-                           .Where(w => w.Plataforma.ToLower() == plataforma.Trim().ToLower()).ToList();
+                           .Where(w => w.Plataforma.Equals(plataforma)).ToList();
             }
             catch (Exception ex)
             {

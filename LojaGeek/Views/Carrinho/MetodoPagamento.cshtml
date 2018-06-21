@@ -30,13 +30,13 @@
                                     <div class="card-body">
                                         <p><strong>Divida em até <em>10 vezes sem juros</em> nessa modalidade</strong></p>
 
-                                        <input type="number" class="form-control" required name="num_cartao" placeholder="Número do cartão [Apenas números]"/>
+                                        <input type="text" class="form-control num_cartao" required name="num_cartao" placeholder="Número do cartão"/>
                                         <br />
                                         <input type="text" class="form-control" required name="nome_cartao" placeholder="Nome como está no cartão"/>
                                         <br />
-                                        <input type="text" class="form-control" required maxlength="6" name="vencimento" placeholder="Data de vencimento do cartão [yyyymm]"/>
+                                        <input type="text" class="form-control venc_cartao" required name="vencimento" placeholder="Data de vencimento do cartão"/>
                                         <br />
-                                        <input type="number" class="form-control" required maxlength="3" name="cod_seguranca" placeholder="Código de segurança"/>
+                                        <input type="text" class="form-control cod_cartao" required maxlength="3" name="cod_seguranca" placeholder="Código de segurança"/>
                                         <br />
                                         <select required name="parcelas" class="form-control">
                                             <option selected disabled>Quantas parcelas</option>

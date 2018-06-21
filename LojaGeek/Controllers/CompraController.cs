@@ -224,7 +224,7 @@ namespace LojaGeek.Controllers
                 pesoL.InnerText = (totalPeso).ToString() + "g";
 
                 XmlNode pesoB = xmlDoc.SelectSingleNode("//*[@id='pesoBruto']");
-                pesoB.InnerText = ((qtdTotalProduto*50)*totalPeso).ToString()+"g";
+                pesoB.InnerText = ((qtdTotalProduto*50) + totalPeso).ToString()+"g";
 
                 XmlNode obsCont = xmlDoc.SelectSingleNode("//*[@id='CodigoPedido']");
                 obsCont.InnerText = compra.Id.ToString();

@@ -161,6 +161,11 @@ namespace LojaGeek.Controllers
             Endereco endereco = (Endereco)Session["endereco"];
             Guid id_endereco = endereco.Id;
 
+            num_cartao = num_cartao.Replace(" ", "");
+            var vencimentoDividido = vencimento.Split('/');
+            vencimento = vencimentoDividido[1] + vencimentoDividido[0];
+
+
             validarCartao.Card server = new validarCartao.Card();
             validarCartao.tDadosCartao cartao = new validarCartao.tDadosCartao();
             cartao.CNPJEmpresa = 999999999;

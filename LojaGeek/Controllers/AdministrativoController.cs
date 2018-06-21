@@ -151,7 +151,7 @@ namespace LojaGeek.Controllers
                 }
                 catch (Exception ex)
                 {
-                    TempData["error"] = ex;
+                    TempData["error"] = ex.Message;
                     return RedirectToAction("Estoque");
                 }
             }
@@ -186,7 +186,7 @@ namespace LojaGeek.Controllers
                 }
                 catch (Exception ex)
                 {
-                    TempData["error"] = ex;
+                    TempData["error"] = ex.Message;
                     return RedirectToAction("Estoque");
                 }
 
@@ -198,6 +198,77 @@ namespace LojaGeek.Controllers
             }
 
             
+        }
+
+        public ActionResult AtivarCupom(Guid id)
+        {
+            if (EhAdmin())
+            {
+                try
+                {
+                    var cupom = DbFactory.Instance.CupomRepository.FindById(id);
+                    if (cupom.FoiUsado != false)
+                    {
+                        TempData["success"] = "Cupom ativado";
+                        cupom.FoiUsado = false;
+                        DbFactory.Instance.CupomRepository.SaveOrUpdate(cupom);
+                    }
+                    else
+                    {
+                        TempData["warning"] = "Cupom já está ativo";
+                    }
+
+                    return RedirectToAction("Cupons");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex.Message;
+                    return RedirectToAction("Cupons");
+                }
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
+        }
+
+        public ActionResult DesativarCupom(Guid id)
+        {
+            if (EhAdmin())
+            {
+                try
+                {
+                    var cupom = DbFactory.Instance.CupomRepository.FindById(id);
+
+                    if (cupom.FoiUsado != true)
+                    {
+                        TempData["success"] = "Cupom desativado";
+                        cupom.FoiUsado = true;
+                        DbFactory.Instance.CupomRepository.SaveOrUpdate(cupom);
+                    }
+                    else
+                    {
+                        TempData["warning"] = "Cupom já está inativo";
+                    }
+
+                    return RedirectToAction("Cupons");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex.Message;
+                    return RedirectToAction("Cupons");
+                }
+
+            }
+            else
+            {
+                TempData["warning"] = "Área restrita, necessário autenticação";
+                return RedirectToAction("LoginView");
+            }
+
+
         }
 
         //public ActionResult BuscarPeloNome(String edtBusca)

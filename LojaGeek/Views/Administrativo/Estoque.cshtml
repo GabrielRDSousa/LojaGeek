@@ -55,7 +55,7 @@
                                     @if (@item.Foto != null)
                                     {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [100x100]" style="width: 100px; height: 100px;" src="@item.Foto" data-holder-rendered="true">}
                                 else
-                                    {<img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [100x100]" style="width: 100px; height: 100px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
+                                    {<img class="card-img-right flex-auto d-none d-md-block btn-" data-src=" " alt="Thumbnail [100x100]" style="width: 100px; height: 100px;" src="~/Images/image-not-found.jpg" data-holder-rendered="true">}
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Nome)
@@ -70,9 +70,9 @@
                                     @Html.DisplayFor(modelItem => item.Ativo)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Desativar produto", "DesativarProduto", new { id = item.Id }) |
-                                    @Html.ActionLink("Ativar produto", "AtivarProduto", new { id = item.Id }) |
-                                    @Html.ActionLink("Adicionar ao estoque", "AdicionarEstoque", new { id = item.Id })
+                                    @Html.ActionLink("Desativar produto", "DesativarProduto", new { id = item.Id }, new { @class = "btn btn-danger"}) 
+                                    @Html.ActionLink("Ativar produto", "AtivarProduto", new { id = item.Id }, new { @class = "btn btn-info" }) 
+                                    @Html.ActionLink("Adicionar ao estoque", "AdicionarEstoque", new { id = item.Id }, new { @class = "btn btn-acao" })
                                 </td>
                             </tr>
                             }

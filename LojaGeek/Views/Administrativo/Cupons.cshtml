@@ -6,44 +6,59 @@
 
 <h2>Cupons</h2>
 
-<div center>
+<div class="center">
     <div>
-        @Html.ActionLink("Criar cupom", "CriarCupom", new {@class="btn btn-acao" })
+        @Html.ActionLink("Criar cupom", "CriarCupom", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+<br />
+
+<div class="row center">
+    <div class="col-lg-10">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align:center">
+                <strong>Cupons</strong>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table class="table table-responsive table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Desconto)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Desativado")
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desconto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FoiUsado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Desativar", "DesativarCupom", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Ativar", "AtivarCupom", new { id = item.Id }, new { @class = "btn btn-acao" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
     </div>
 </div>
 
-<div class="center">
-    <table class="table table-responsive table-striped">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desconto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoiUsado)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Desconto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FoiUsado)
-                </td>
-                <td>
-                    @Html.ActionLink("Desativar", "Desativar", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>

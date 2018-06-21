@@ -9,21 +9,21 @@
 
     <div class="row">
         <p>
-            @Html.ActionLink("Voltar a página principal", "Index", "Home", null, new { @class="voltar"})
+            @Html.ActionLink("Voltar a página principal", "Index", "Home", null, new { @class = "voltar" })
         </p>
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
 
             <div class="card mt-4">
-                    @if (Model.Foto != null)
-                    {
-                        <img src="@Model.Foto" alt="imagem do produto" style="width: 600px; height: 600px;" />
-                    }
-                    else
-                    {
-                        <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
-                    }
+                @if (Model.Foto != null)
+                {
+                    <img src="@Model.Foto" alt="imagem do produto" style="width: 600px; height: 600px;" />
+                }
+                else
+                {
+                    <img src="~/Images/image-not-found.jpg" alt="Imagem não encontrada" height="200px" width="200px" />
+                }
                 <div class="card-body">
                     <h3 class="card-title">@Model.Nome</h3>
                     <h4>R$ @Model.Preco</h4>
@@ -45,17 +45,44 @@
                 <div class="card-body">
                     @foreach (var item in Model.Comentarios)
                     {
-                        for (var i=0; i<item.Nota; i++)
+                        if (Session["Admin"] != null)
                         {
-                            <i class="glyphicon glyphicon-star"></i>
+                            @Html.ActionLink("Ocultar comentário", "DesativarComentario", "Comentario", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Desocultar comentário", "AtivarComentario", "Comentario", new { id = item.Id }, new { @class = "btn btn-acao" })<br />
+
+                            for (var i = 0; i < item.Nota; i++)
+                            {
+                                <i class="glyphicon glyphicon-star"></i>
+                            }
+                            for (var i = 0; i < 5 - item.Nota; i++)
+                            {
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                            }
+                            <p>@item.Texto</p>
+                            <small class="text-muted">Enviado por @item.Nome</small>
+                            <small class="text-muted">Visivel: @item.Visivel</small>
+                            <hr>
                         }
-                        for (var i = 0; i < 5-item.Nota; i++)
+                        else
                         {
-                            <i class="glyphicon glyphicon-star-empty"></i>
+                            if (item.Visivel)
+                            {
+                                for (var i = 0; i < item.Nota; i++)
+                                {
+                                    <i class="glyphicon glyphicon-star"></i>
+                                }
+                                for (var i = 0; i < 5 - item.Nota; i++)
+                                {
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                }
+                                <p>@item.Texto</p>
+                                <small class="text-muted">Enviado por @item.Nome</small>
+                                <hr>
+                            }
                         }
-                        <p>@item.Texto</p>
-                        <small class="text-muted">Enviado por @item.Nome</small>
-                        <hr>
+
+
+
                     }
 
                     @using (Html.BeginForm("GravarComentario", "Comentario", FormMethod.Post))
@@ -64,7 +91,7 @@
                             <label for="comentario">Adicione seu comentário aqui:</label>
                             <textarea class="form-control" rows="5" cols="20" name="comentario" required></textarea>
                             <div>
-                                <select name="nota" class="form-control">
+                                <select name="nota" class="form-control" required>
                                     <option selected disabled>Dê sua nota para o jogo</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -92,5 +119,3 @@
 
 </div>
 <!-- /.container -->
-
-

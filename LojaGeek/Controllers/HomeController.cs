@@ -36,7 +36,7 @@ namespace LojaGeek.Controllers
             }
             else
             {
-                if(busca != "Playstation 4" || busca != "Playstation 3" || busca != "Xbox One" || busca != "Xbox 360" || busca != "Switch" || busca != "Nintendo 3DS")
+                if(!busca.Equals("Playstation 4") && !busca.Equals("Playstation 3") && !busca.Equals("Xbox One") && !busca.Equals("Xbox 360") && !busca.Equals("Switch") && !busca.Equals("Nintendo 3DS"))
                 {
                     var produtosAux = DbFactory.Instance.ProdutoRepository.GetAllByName(busca);
                     var produtos = new List<Produto>();

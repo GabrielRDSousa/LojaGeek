@@ -7,13 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <title>@ViewBag.Title - Loja Geek</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
     <script src="~/Scripts/validate_pt-br.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/gulpfile.js"></script>*@
+    @*<script src="~/Scripts/sb-admin-2.min.js"></script>*@
+    <script src="~/Scripts/toastr.min.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/sb-admin-2.min.css" rel="stylesheet" />*@
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -105,7 +115,7 @@
                     <li class="item">@Html.ActionLink("Playstation 3", "Index", "Home", new { busca = "Playstation 3" }, null)</li>
                     <li class="item">@Html.ActionLink("Xbox One", "Index", "Home", new { busca = "Xbox One" }, null)</li>
                     <li class="item">@Html.ActionLink("Xbox 360", "Index", "Home", new { busca = "Xbox 360" }, null)</li>
-                    <li class="item">@Html.ActionLink("Switch", "Index", "Home", new { busca = "Switch" })</li>
+                    <li class="item">@Html.ActionLink("Switch", "Index", "Home", new { busca = "Switch" }, null)</li>
                     <li class="item">@Html.ActionLink("Nintendo 3DS", "Index", "Home", new { busca = "Nintendo 3DS" }, null)</li>
                 </ul>
             </div>

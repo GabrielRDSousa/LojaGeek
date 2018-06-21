@@ -11,6 +11,11 @@
     $('.money').inputmask("mask", { "mask": "000.000.000.000.000,00" });
     $('.money2').inputmask("mask", { "mask": "#.##0,00" });
     $('.percent').inputmask("mask", { "mask": "##%" });
+
     $('.placeholder').inputmask("mask", { "mask": "00/00/0000", "placeholder": "__/__/____" });
-    $('.selectonfocus').inputmask("mask", { "mask": "00/00/0000", "selectOnFocus":true });
+    $('.selectonfocus').inputmask("mask", { "mask": "00/00/0000", "selectOnFocus": true });
+
+    $('.num_cartao').inputmask("mask", { "mask": "#### #### #### ####" });
+    $('.venc_cartao').inputmask("mask", { "mask": "##/####" });
+    $('.cod_cartao').inputmask("mask", { "mask": "###" });
 });
