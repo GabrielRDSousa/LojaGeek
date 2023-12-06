@@ -1,206 +1,199 @@
-### Projeto em andamento
+# LojaGeek E-Commerce
+The project was created using the ASP.Net MVC5, Razor, and Bootstrap tools. Built to serve as an e-commerce platform for the sale of physical video games, it aims to be a concise, comprehensive website with current development trends, such as responsiveness and user experience (UX).
 
-# LojaGeek  E-Commerce
-O projeto criado usando a ferramenta ASP.Net MVC5, Razor e bootstrap. Construído para ser uma plataforma de e-commerce para venda de jogos eletrônicos, em mídia física. Tem como objetivo ser um site conciso, completo e com tendências de desenvolvimento atuais, como a resposividade e ux.
+## Getting Started
+Open the .sln file at the root of the project with Visual Studio. After loading all configurations, press F5 to create a local server and open the site in the browser.
 
-## Iniciando o projeto
-Abrir o arquivo .sln da raiz do projeto com o Visual Studio. Após carregar todas as configurações, aperte f5 para criar um servidor local e abrir o site no browser.
+### Prerequisites
+- Windows operating system.
+- Visual Studio, preferably version 2017.
 
-### Pré requisitos
-- Sistema operacional windows.
-- Visual Studio, recomendado o 2017
+## System Description
+### General
+- The site has an aesthetic based on the Bootstrap library.
+- It functions similarly to a typical e-commerce site.
+- A visitor can browse the storefront, create a shopping cart, view product details, comment on a product, with the only limitation being the purchase.
+- An administrator can log in, perform all actions a customer can, except for making purchases. Additionally, administrators can control inventory, coupons, and purchases through dedicated pages for these functions.
+- The database is modeled with the Entity-Relationship Diagram (ERD) shown below:
 
-## Descrição do sistema
-### Geral
-- Site com estética baseada na bibliteca bootstrap
-- Funcionamento aproximado de um site comum de e-commerce
-- Um visitante pode navegar pela vitrine, pode criar um carrinho, pode ver os detalhes de um produto, pode comentar em um produto, só é limitada a compra.
-- Um administrador pode fazer login, pode fazer tudo que um cliente pode fazer, exceto compra. Além de poder controlar o estoque, cupons e compras através de páginas dedicadas a esta função.
-- O banco de dados está modelado de forma que o DER é este apresentado abaixo:
+![ERD](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/DER.PNG) **System ERD under development**
 
-![DER](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/DER.PNG)
-										**DER do sistema sendo desenvolvido** 
+#### General System Improvements
+- [x] Improved application of Bootstrap.
+- [x] Enhanced responsiveness.
+- [ ] Creation of a customer profile page.
+- [x] Creation of a page for the customer to enter an address.
+- [ ] Creation of a comment administration tool for an administrator.
 
-#### Melhorias para o sistema em geral
-- [x] Melhor aplicação do bootstrap
-- [x] Melhor responsividade
-- [ ] Criação de uma página para o perfil do cliente
-- [x] Criação de uma página para o cliente inserir um endereço
-- [ ] Criação de uma ferramenta de administração de comentários para um administrador
+### Home Page
+- The home page features a fixed top menu with the store name and some menu items.
+- The store name is clickable and leads to the home page, regardless of the user's location in the system.
+- Analogous to the side is a button with a house-shaped symbol that performs the same action as the logo.
+- The register button leads to a form for registering a new customer.
+- The login button takes the customer to a login form.
+- The shopping cart symbol leads to the cart page.
+- Below is the list of games if any have been added.
+- Under all products are two buttons, details, and one with a shopping cart glyphicon.
+- The details button takes you to the product detail page.
+- The button with a cart adds the product to the cart.
+- The game listing starts from the center and spreads the games equally.
+- The footer below contains a copyright link to the administrative area.
+- Clicking the link redirects to the administrative login page.
 
-### Página Inicial
-- A página inicial possuium menu fixo superior com o nome da loja e alguns item de menu.
-- O nome da loja é clicável e leva a página incial, não importa aonde esteja no sistema.
-- Análogo ao lado possui um botão com um símbolo em formato de casinha, que faz a mesma ação da logo.
-- O botão cadastrar leva a um formulário para cadastro de um novo cliente.
-- O botão entrar leva o cliente a um formulário de login.
-- O símbolo de carrinho, leva a página de carrinho da sessão.
-- Abaixo fica a listagem de jogos, caso tenha sido adicionado algum.
-- Embaixo de todos os produtos há dois botões, detalhes e um com glyphicon com um carrinho de compras.
-- O botão detalhes te leva à página de detalhe do produto.
-- O botão com um carrinho coloca o produto no carrinho. 
-- Listagem de jogos começa do ponto central e espalha os jogos em forma igualada.
-- Abaixo há o footer com um copyright, que é um link para a área administrativa.
-- Ao clicar no link há um redirecionamento para a página de login administrativo.
-#### Melhorias para a página inicial
-- [x] Listagem de produtos mais concisa
+#### Home Page Improvements
+- [x] More concise product listing.
 
-![Página inicial sem nenhum cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial.png)
-										**Página inicial sem nenhum cliente logado**
+![Home Page without a logged-in customer](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial.png) **Home Page without a logged-in customer**
 
-![Página inicial com um cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial%20com%20cliente%20logado.png)
-										**Página inicial com um cliente logado**
+![Home Page with a logged-in customer](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Inicial%20com%20cliente%20logado.png) **Home Page with a logged-in customer**
 
-### Página Login administrativo
-- O menu permanece o mesmo da página inicial.
-- Há um formulário centrlaizado com apenaas um input, um label e um botão.
-- A senha administrativa é uma senha gerada automática levando em conta as datas e horas.
-- Se a senha for incorreta será levada a tela inicial do sistema.
-- Se a senha for correta será levado a tela de gerenciamento de estoque.
+### Administrative Login Page
+- The menu remains the same as the home page.
+- There is a centered form with only one input, one label, and one button.
+- The administrative password is an automatically generated password taking into account dates and times.
+- If the password is incorrect, the system returns to the initial screen.
+- If the password is correct, the user is taken to the inventory management screen.
 
-![Página login administrativo](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20aadministrativo.png)
-										**Página login administrativo**
+![Administrative Login Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20aadministrativo.png) **Administrative Login Page**
 
-### Página Estoque
-- O menu agora é o admnistrativo, contendo um opção de sair e de navegação para a página de estoque, além das opções da logo e do símbolo de casa do menu já citado na página inicial.
-- Há um botão Novo produto que leva a uma página de formulário para adição do produto.
-- Abaixo há uma tabela com título produtos, uma linha de títulos, contendo foto, nome ,preço, quantidade em estoque , ativo e ações.
-- Na coluna foto é carregado uma pequena thumbnail da foto associada ao produto.
-- Na coluna nome será carregado o nome do produto.
-- Na coluna preço será carregado o preço atual do produto.
-- Na coluna quantidade em estoque será carregado a quantidade atual do produto.
-- Na coluna ativo será mostrado se o produto está ativo e visível para compra ou não.
-- Na coluna ações será carregado os botões links de ação para o produto, como "Destivar produto", "Ativar Produto", Adicionar ao estoque.
-- O botão link Adicionar estoque leva a uma tela de formulário para adicionar mais produto ao estoque.
-#### Melhorias para a página Estoque
-- [x] Corrigir as nomeações e aparências que estão riscadas acima, para questão de usabilidade.
-- [x] Implementar o carregamento da foto thumnail riscada acima.
-- [x] Impedir o ativamento do produto caso o estoque esteja zerado.
-- [x] Impedir o acesso de páginas administrativas através de link direto.
-- [x] Criar área para criação de cupoms.
+### Inventory Page
+- The menu is now the administrative one, containing options to log out and navigate to the inventory page, in addition to the options of the logo and home symbol mentioned in the home page.
+- There is a New Product button that leads to a form page for adding a new product.
+- Below is a table with the product title, a row of titles containing a photo, name, price, quantity in stock, active status, and actions.
+- In the photo column, a small thumbnail of the associated product photo is loaded.
+- In the name column, the product name is displayed.
+- In the price column, the current price of the product is displayed.
+- In the quantity in stock column, the current quantity of the product is displayed.
+- In the active column, it is shown whether the product is active and visible for purchase or not.
+- In the actions column, action link buttons for the product are loaded, such as "Deactivate Product," "Activate Product," and "Add to Inventory."
 
-![Página de estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Controle%20de%20estoque.png)
-										**Página de estoque**
+#### Inventory Page Improvements
+- [x] Fix the crossed-out nominations and appearances above for usability.
+- [x] Implement loading the crossed-out thumbnail photo.
+- [x] Prevent activation of the product if the stock is zero.
+- [x] Prevent access to administrative pages through direct links.
+- [x] Create an area for creating coupons.
 
-### Página Cadastro de Novo Produto
-- Um formulário com título para cadastrar produto.
-- Formulário contém nome, descrição, plataforma, estoque, preço, foto e um checkbox ativo e um botão para salvar produto
-- O input de preço possui um placeholder explicando qual deve ser inserido.
-- Todos esses inputs são informações para guardar um produto no banco de dados.
-- Há um botão no no começo do formulário para voltar para a listagem do estoque.
-- Ao salvar o preço deve ser calculado automaticamente, levando em conta todos os custos por tráz e todos os impostos.
-- Ao salvar o produto deve-se retornar a listagem de produtos na view de estoque.
-#### Melhorias para a página Cadastro de Novo Produto
-- [x] Colocar o input de foto como um input file para upload de uma imagem de thumbnail.
-- [x] Colocar o input de plataforma como uma lista dropdown.
-- [x] Corrigir o link que está riscado acima.
-- [ ] Modificar modelo para adicionar estilo do jogo.
+![Inventory Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Controle%20de%20estoque.png) **Inventory Page**
 
-![Página Cadastro de Novo Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20produto.png)
-										**Página Cadastro de Novo Produto**
+### New Product Registration Page
+- A form with a title to register a product.
+- The form contains name, description, platform, stock, price, photo, an active checkbox, and a button to save the product.
+- The price input has a placeholder explaining what should be entered.
+- All these inputs are information to store a product in the database.
+- There is a button at the beginning of the form to return to the inventory listing.
+- When saving, the price must be automatically calculated, taking into account all costs and taxes behind it.
+- After saving, return to the product listing on the inventory view.
 
-### Página Adicionar estoque
-- Um formulário com título para Adicionar Estoque.
-- Formulário contém nome, descrição, preenchido com o produto a ser adicionado no estoque.
-- Inputs de estoque, preço editáveis, para preço das novas peças e quantidade do mesmo, há também um botão de adicionar estoque
-- Há um link abaixo do formulário para voltar a tela de estoque
-- Ao mandar adicionar no estoque, o preço real será calculado e feito uma média dos preços para o calculo do novo preço do produto, isso será calculado automaticamente.
-#### Melhorias para a página Adicionar estoque
-- [ ] Zerar os valores do inputs de estoque e preço para melhorar a usabilidade.
-- [ ] Impedir input de números negativos.
+#### New Product Registration Page Improvements
+- [x] Make the photo input an input file for uploading a thumbnail image.
+- [x] Make the platform input a dropdown list.
+- [x] Fix the crossed-out link above.
+- [ ] Modify the model to add game style.
 
-![Página Adicionar estoque](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Repor%20estoque.png)
-										**Página Adicionar estoque**
+![New Product Registration Page]![Página Cadastro de Novo Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20produto.png) **New Product Registration Page**
 
-### Página Cadastrar Cliente
-- Um formulário com título para Cadastro Cliente.
-- Formulário contém nome, Sobrenome, CPF, E-mail, Senha e checkbox de interesses.
-- Abaixo do input tem um botão para cadastrar
-- Ao enviar o cliente é gravado no banco de dados.
-- Após o cliente ser salvo é levado a tela de login.
-#### Melhorias para a página Cadastrar Cliente
-- [ ] Máscara para o cpf.
-- [ ] Input específico para email.
-- [ ] Input para confirmar senha.
-- [x] Melhorar interesses.
+### Add Inventory Page
+- A form with a title to Add Inventory.
+- The form contains a product name, description, filled with the product to be added to inventory.
+- Editable stock and price inputs for the price of the new pieces and their quantity, along with a button to add inventory.
+- There is a link below the form to return to the inventory screen.
+- When adding to inventory, the real price will be calculated, and an average of the prices for the product's new price will be calculated automatically.
 
-![Página Cadastrar Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20cliente.png)
-										**Página Cadastrar Cliente**
+#### Add Inventory Page Improvements
+- [ ] Zero out the values in the stock and price inputs to improve usability.
+- [ ] Prevent input of negative numbers.
 
-### Página Login Cliente
-- Possui um formulário com título login.
-- Input para email e senha.
-- Há um botão Enviar.
-- Ao formulário ser preenchido e enviado é testado no banco de dados se existem no banco de dados
-- Caso exista este é logado na sessão, o menu muda para um menu de cliente, com o nome dele como item, botão sair, carrinho de compras logo e simbolo home.
-- Caso não exista o usuário esse é mandado de volta a página inicial.
-#### Melhorias para a página Login Cliente
-- [x] Mensagem de erro caso login não bem sucessido.
-- [x] Link para cadastar cliente.
+![Add Inventory Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Repor%20estoque.png) **Add Inventory Page**
 
-![Página Login Cliente](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20cleinte.png)
-										**Página Login Cliente**
+### Customer Registration Page
+- A form with a title for Customer Registration.
+- The form contains name, surname, CPF, email, password, and interests checkbox.
+- Below the input is a button to register.
+- After submitting, the customer is recorded in the database.
+- After
 
+ the customer is saved, they are taken to the login screen.
 
-### Página Detalhe Produto
-- A tela traz todas informações do produto exceto se está ativo ou não, pois isso é exclusivo da administração.
-- Possui um textarea para colocar um comentário.
-- Possui um input para colocar o nome da pessoa que vai comentar.
-- Um botão para enviar o comentário
-- Um botão para colocar o produto no carrinho
-- Possui no fim da página uma lista de comentário do produto
-#### Melhorias para a página Detalhe Produto
-- [x] Corrigir botão de enviar para o carrinho.
-- [x] Aproximar detalhe de outros e-commerce.
+#### Customer Registration Page Improvements
+- [ ] Mask for CPF.
+- [ ] Specific input for email.
+- [ ] Input to confirm the password.
+- [x] Improve interests.
 
-![Página Detalhe Produto](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Detalhes%20do%20produto.png)
-										**Página Detalhe Produto**
+![Customer Registration Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Cadastro%20cliente.png) **Customer Registration Page**
 
-### Página do carrinho
-- Uma tabela com título carrinho.
-- Uma coluna com cabeçalho produto, ao qual possui o nome do produto.
-- Uma coluna com cabeçalho preço, ao qual possui o preço do produto vezes a quantidade.
-- Uma coluna com cabeçalho quantidade, ao qual possui a quantidade atual do produto, e um select com o número máximo do estoque do produto, um botão de atualizar total, que ao apertar atualiza a quantidade e os preços.
-- Uma coluna com cabeçalho ~~ações~~, ao qual possui botão "Detalhes do produto", ao qual leva ao detalhe do produto, botão de retirar produto do carrinho.
-- Uma área para o Valor Total do carrinho.
-- Uma área para aplicar um cupom, com mensagem de erro caso não seja possível aplicar o cupom.
-- Uma área para aplicar frete, com mensagem de quanto é o frete.
-- No fim, caso não haja usuário logado, um botão cadastrar e um entrar, que leva para view cadastro de cliente e view login respectivamente.
-- No fim, caso haja usuário logado, um botão comprar que leva a view de confirmação de compra.
-#### Melhorias para a página do carrinho
-- [x] Melhorar mensagens de erro e sucesso.
-- [ ] Criar view de carrinho vazio.
+### Customer Login Page
+- It has a form titled login.
+- Input for email and password.
+- There is a Send button.
+- When the form is filled out and sent, it is tested in the database if it exists.
+- If the user exists, they are logged into the session, and the menu changes to a customer menu with their name as an item, a logout button, a shopping cart logo, and a home symbol.
+- If the user does not exist, they are sent back to the home page.
 
-![Página do carrinho sem cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png)
-										**Página do carrinho sem cliente logado**
+#### Customer Login Page Improvements
+- [x] Error message in case of unsuccessful login.
+- [x] Link to register customer.
 
-![Página do carrinho com cliente logado](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20logado.png)
-										**Página do carrinho com cliente logado**
+![Customer Login Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Login%20cleinte.png) **Customer Login Page**
 
-### Página de compra
-- Uma página estática com texto falando o nome, cpf, com data da compra, items comprado com suas quantidades e preço, valor total da compra e instruções finais da compra.
-#### Melhorias para a página de compra
-- [x] Colocar uma view intermediária para cadastro de endereço.
-- [x] Fazer uma aparência de nota fiscal.
+### Product Detail Page
+- The screen displays all product information except whether it is active or not, as this is exclusive to administration.
+- It has a textarea to enter a comment.
+- It has an input to enter the name of the person who will comment.
+- A button to send the comment.
+- A button to add the product to the cart.
+- At the bottom of the page is a list of product comments.
 
-![Página de compra](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Comprovante%20de%20compra.png)
-										**Página de compra**
+#### Product Detail Page Improvements
+- [x] Fix send to cart button.
+- [x] Approximate details to other e-commerce sites.
 
-## Construído com as ferramentas
-* [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - O framework back-end utilizado
-* [Razor](http://jakeydocs.readthedocs.io/en/latest/mvc/views/razor.html) - O framework web utilizado
-* [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - CSS Framework utilizado
-* [JQuery](https://api.jquery.com/) - JavaScript framework
-* [NHibernate](http://hibernate.org/orm/documentation/5.2/) - Framework de banco de dados utilizado
+![Product Detail Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Detalhes%20do%20produto.png) **Product Detail Page**
 
+### Cart Page
+- A table titled cart.
+- A column with the product header, which has the product name.
+- A column with the price header, which has the price of the product times the quantity.
+- A column with the quantity header, which has the current quantity of the product and a select with the maximum number of the product's stock, an update total button that, when pressed, updates the quantity and prices.
+- A column with the ~~actions~~ header, which has the "Product Details" button, which takes you to the product detail, and the button to remove the product from the cart.
+- An area for the Total Value of the cart.
+- An area to apply a coupon, with an error message if it is not possible to apply the coupon.
+- An area to apply shipping, with a message of how much the shipping is.
+- At the bottom, if there is no logged-in user, a register button and a login button, which takes you to the customer registration view and the login view, respectively.
+- At the bottom, if there is a logged-in user, a buy button that takes you to the purchase confirmation view.
 
-## Autores
-* **Gabriel Ramos de Sousa** - *Atual mantenedor do projeto, Mauntenção do sistema, refatoração e continuação de senvolvimento* - [GabrielDSousa](https://github.com/GabrielDSousa)
-* **Danilo Itagyba** - *Iníciou o projeto* - [itagyba](https://github.com/itagyba)
-* **João Paulo** - *Auxiliou na documentação* - [JoaoPaulo333](https://github.com/JoaoPaulo333)
+#### Cart Page Improvements
+- [x] Improve error and success messages.
+- [ ] Create an empty cart view.
 
-## Licensa
-This project is licensed under the MIT License
+![Cart Page without a logged-in customer](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20deslogado.png) **Cart Page without a logged-in customer**
 
-## Agradecimentos
-* Ao professor Tadeu, por guiar no projeto, com requerimentos incrementais e semanais.
+![Cart Page with a logged-in customer](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Carrinho%20logado.png) **Cart Page with a logged-in customer**
+
+### Purchase Page
+- A static page with text stating the name, CPF, purchase date, items purchased with their quantities and prices, total purchase value, and final purchase instructions.
+
+#### Purchase Page Improvements
+- [x] Add an intermediary view for address registration.
+- [x] Create an invoice-like appearance.
+
+![Purchase Page](https://github.com/GabrielDSousa/LojaGeek/blob/master/Documentação/Imagens/Comprovante%20de%20compra.png) **Purchase Page**
+
+## Built with Tools
+* [Asp.Net MVC 5](https://docs.microsoft.com/pt-br/aspnet/mvc/overview/getting-started/introduction/getting-started) - The backend framework used.
+* [Razor](http://jakeydocs.readthedocs.io/en/latest/mvc/views/razor.html) - The web framework used.
+* [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - CSS Framework used.
+* [JQuery](https://api.jquery.com/) - JavaScript framework.
+* [NHibernate](http://hibernate.org/orm/documentation/5.2/) - Database framework used.
+
+## Authors
+* **Gabriel Ramos de Sousa** - *Current project maintainer, System maintenance, refactoring, and ongoing development* - [GabrielDSousa](https://github.com/GabrielDSousa)
+* **Danilo Itagyba** - *Initiated the project* - [itagyba](https://github.com/itagyba)
+* **João Paulo** - *Assisted in documentation* - [JoaoPaulo333](https://github.com/JoaoPaulo333)
+
+## License
+This project is licensed under the MIT License.
+
+## Acknowledgments
+* To Professor Tadeu, for guiding the project with incremental and weekly requirements.
